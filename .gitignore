@@ -69,3 +69,5 @@ vendor/*
 *.7z
 *.sql.gz
 *.bz2
+*.json
+*.mp4
