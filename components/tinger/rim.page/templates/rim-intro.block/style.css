@@ -1,0 +1,52 @@
+.rim-intro {
+	min-height: 700px;
+    max-height: 900px;
+	height: calc(100vh - 80px);
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+	position: relative;
+	background-image: url(/local/templates/tinger/img/rim/rim-bg-new-2560.webp);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.rim-intro__title-container {
+	max-width: 400px;
+}
+
+.rim-intro__subtitle-container {
+	max-width: 300px;
+	font-weight: 600;
+}
+
+.rim-intro__breadcrumb {
+	padding-top: 30px;
+}
+
+.rim-intro__btn-container {
+	display: grid;
+	grid-template-columns: max-content;
+}
+
+@media (max-width: 1920px) {
+	.rim-intro {
+		background-image: url(/local/templates/tinger/img/rim/rim-bg-new-1920.webp);
+	}
+}
+
+@media (max-width: 1279px) {
+	.rim-intro {
+		min-height: 600px;
+		max-height: 750px;
+	}
+}
+
+@media (max-width: 767px) {
+	.rim-intro {
+		background-image: url(/local/templates/tinger/img/rim/rim-bg-new-small.webp);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+}

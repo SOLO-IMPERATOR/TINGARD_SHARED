@@ -1,0 +1,33 @@
+/* media */
+.media {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 30px;
+	row-gap: 60px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.media__img {
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.media__video {
+	margin-bottom: 20px;
+}
+
+.media__name {
+	text-align: center;
+}
+
+@media (max-width: 767px) {
+	.media {
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+}

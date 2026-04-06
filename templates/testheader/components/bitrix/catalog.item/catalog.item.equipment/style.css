@@ -1,0 +1,40 @@
+.additional-equipment__item {
+	display: grid !important;
+	gap: 15px;
+	grid-template-rows: max-content max-content 1fr max-content max-content;
+	background-color: var(--color-white);
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.additional-equipment__labels {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.additional-equipment__img-container {
+	position: relative;
+}
+
+.additional-equipment__img {
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.additional-equipment__name {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.additional-equipment__btn-container {
+	display: grid;
+}
+
+.additional-equipment__price {
+	font-weight: 600;
+}
+
+.additional-equipment__desc {
+	font-size: 15px;
+}

@@ -1,0 +1,236 @@
+/* model intro */
+.model-intro {
+	position: relative;
+	min-height: 700px;
+	max-height: 900px;
+	height: 100vh;
+	display: grid;
+	grid-template-rows: max-content 1fr max-content;
+}
+
+.model-intro__img-container {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.model-intro__img-container::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.9) 100%);
+}
+
+.model-intro__img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+	background-color: var(--dark);
+}
+
+.model-intro__breadcrumb {
+	margin-top: 80px;
+	padding-top: 30px;
+}
+
+.model-intro__breadcrumb .breadcrumb__item {
+	color: var(--light);
+}
+
+.model-intro__breadcrumb .breadcrumb__link {
+	color: var(--light);
+}
+
+/* model intro body */
+.model-intro__body {
+	display: grid;
+	grid-template-rows: repeat(3, max-content);
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.model-intro__text {
+	color: var(--light);
+}
+
+.model-intro__text-desc {
+	color: var(--light);
+}
+
+.model-intro__title {
+	color: var(--light);
+}
+
+.model-intro__subtitle {
+	color: var(--light);
+	max-width: 600px;
+}
+
+.model-intro__body-btn-container {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	column-gap: 20px;
+}
+
+/* model intro footer */
+.model-intro__footer {
+	height: 80px;
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid var(--light);
+}
+
+.model-intro__price {
+	color: var(--light);
+}
+
+.model-intro__benefits {
+	display: grid;
+	grid-template-columns: repeat(3, max-content);
+	column-gap: 20px;
+}
+
+.model-intro__benefits-item {
+	color: var(--light);
+}
+
+@media (max-width: 1279px) {
+	.model-intro {
+		min-height: 600px;
+		max-height: 750px;
+	}
+
+	.model-intro__breadcrumb {
+		margin-top: 70px;
+	}
+
+	.model-intro__footer {
+		height: 70px;
+	}
+}
+
+@media (max-width: 999px) {
+	.model-intro__footer {
+		height: auto;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+
+	.model-intro__benefits {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 767px) {
+	.model-intro__img-container::after {
+		height: calc(100% - 70px - 140px);
+		background-image: linear-gradient(to bottom, var(--dark) 0%, transparent 20%, transparent 40%, var(--dark) 100%);
+		margin-top: 70px;
+		margin-bottom: 140px;
+	}
+
+	.model-intro__img {
+		border-top: 70px solid var(--dark);
+		border-bottom: 140px solid var(--dark);
+	}
+
+	.model-intro__body {
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 479px) {
+	.model-intro__footer {
+		grid-template-columns: 1fr;
+		row-gap: 15px;
+	}
+}
+
+
+/* seo-intro */
+.seo-intro {
+	min-height: 700px;
+    max-height: 900px;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr max-content;
+    position: relative;
+}
+
+.seo-intro__img-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.seo-intro__img-container::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.9) 100%);
+	z-index: 0;
+}
+
+.seo-intro__img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.seo-intro__title {
+	color: var(--light);
+}
+
+.seo-intro__subtitle {
+	color: var(--light);
+}
+
+.seo-intro__breadcrumb {
+	padding-top: calc(80px + 30px);
+}
+
+.seo-intro__breadcrumb .breadcrumb__link,
+.seo-intro__breadcrumb .breadcrumb__item {
+	color: var(--light);
+}
+
+
+@media (max-width: 1279px) {
+	.seo-intro {
+		min-height: 500px;
+		max-height: 700px;
+	}
+
+	.seo-intro__breadcrumb {
+	padding-top: calc(70px + 30px);
+	}
+}
+
+@media (max-width: 999px) {
+	.seo-intro {
+		min-height: 400px;
+		max-height: 600px;
+	}
+}

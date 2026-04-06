@@ -1,0 +1,464 @@
+<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8" />    <style>        :root {            --bgcolor-gray: #EBECEC;            --h2-color: #028542;            --text-green-color: #028542;            --standart-text-color: #434344;        }        @font-face {            font-family: "Roboto";            src: url("https://tingard.ru/upload/main/Roboto.ttf");        }            @font-face{            font-family: "Micrac";            src: url("https://tingard.ru/upload/vehicleconf/Micrac.OTF");        }        @font-face {            font-family: "Montserat";            src: url("https://tingard.ru/upload/vehicleconf/Montserrat-Medium.ttf");        }        @font-face {            font-family: "OpenSansLight";            src: url("https://tingard.ru/local/components/soloimperator/cellar.configurator/templates/.default/fonts/OpenSans-Light.ttf");        }        @font-face {            font-family: "OpenSansMedium";            src: url("https://tingard.ru/local/components/soloimperator/cellar.configurator/templates/.default/fonts/OpenSans-Medium.ttf");        }        @page {            size: A4;            margin: 0;            margin-top: 10mm;            padding: 0;        }        b {            font-family: "OpenSansMedium";        }        body {            width: 210mm;            height: 297mm;            margin: 0;            padding: 10mm;            padding-top:0;            box-sizing: border-box;            font-family: "OpenSansLight";            background: white;            color: var(--standart-text-color);        }        .break-before {            page-break-before: always;        }        img {            max-width: 100%;        }        .doc-header {            display: flex;            justify-content: space-between;        }        .doc-header-logo {            width: 25%;            object-fit: contain;        }        .doc-header-company {            width: 50%;            padding-left: 20px;            font-size: 15px;        }        .doc-header-company a {            color: var(--standart-text-color);        }        .doc-header-contact {            display: flex;            flex-direction: column;        }        .doc-header-contact a {            text-decoration: none;            color: var(--standart-text-color);            font-size: 15px;        }        .doc-line {            height: 40px;            background: var(--h2-color);            width: 210mm;            position: relative;            left: -10mm;            margin-top: 40px;        }        .doc-line-title {            color: white;            font-size: 30px;            max-width: 82%;            width: 100%;            display: flex;            justify-content: center;            align-items: center;            left: 70px;            text-transform: uppercase;            position: relative;            top: -20px;            font-weight: 300;            letter-spacing: 1.2px;            padding-bottom: 2px;            padding-top: 2px;            z-index: 2;        }        .doc-line-title::before {            content: "";            position: absolute;            left: 0;            top: 0;            width: 100%;            height: 100%;            background: #42454A;            z-index: -1;            transform: skew(-25deg);        }        .doc-machine-data {            display: flex;            gap: 30px;            padding-top: 30px;        }        h1{         font-family:"Micrac";        }        h2,        thead tr td {            margin: 0;            padding: 0;            color: #028542;            text-transform: uppercase;            font-weight: 400;            width: 100%;            text-align: center;            font-size: 22px;            padding-bottom: 10px;            font-family:"Micrac";        }        .grayLine td {            background: var(--bgcolor-gray);        }        table {            border-spacing: 0;            width: 100%;            border-collapse: collapse;        }                 .doc-machine-data-image-shini table {            margin-bottom: 30px;        }        .doc-machine-data-image-color span {            color: #028542;            font-size: 18px;            line-height: 37px;        }        .list-color {            display: flex;            gap: 10px;            align-items: center;        }        .list-color span {            height: 28px;            width: 28px;            border-radius: 100%;            display: block;        }        .list-color span.selected {            border: 3px solid black;        }        .primechanie {            color: #028542;            font-size: 12px;        }        .doc-machine-data-char table {            margin-bottom: 20px;        }        .doc-machine-data-image {            max-width: 44%;            padding-top: 20px;            position:relative;            width:100%;        }        .page-break {            page-break-before: always;        }        .doc-header-contact a img {            max-width: 12px;        }        table td {            font-size: 15px;        }        .doc-machine-data-char table tr td:first-child {            width: 41%;        }        .doc-machine-data-char table tr td {            padding-left: 5px;        }        .doc-machine-data-char table tr td {            padding-top: 4px;            padding-bottom: 4px;        }        .doc-machine-data-image-shini table tr td {            padding-left: 8px;            width: 88%;        }        .doc-priem td {   padding-left:7px;         padding-top: 7px;            padding-bottom: 7px;        }        .dop-table tr td:first-child {            width: 160px;        }        .dop-table tr td:nth-child(2) {            padding-left: 10px;            width: 56%;        }        .dop-table tr td:nth-child(3) {            font-family: "OpenSansMedium";            color: var(--h2-color);            white-space: nowrap;            font-size: 20px;            text-align: center;        }        .dop-table tr td:nth-child(4) {            text-align: center;            width: 50px;        }        td img {            display: block;        }        td {            padding: 0;            border: 0;        }        .dop-table {            margin-bottom: 20px;        }        .base-price {            color: var(--h2-color);            font-size: 20px;        }        .doc-footer-garanty {            color: var(--h2-color);            display: block;            margin-top: 20px;        }        hr {            width: 100%;            height: 4px;            border: none;            background: var(--h2-color);            margin-top: 20px;            margin-bottom: 20px;        }        .doc-footer-bottom {            display: flex;            justify-content: space-between;            padding-bottom: 20px;        }        .doc-footer-bottom>span {            width: 63%;            line-height: 25px;        }            .pseudochekbox {      display: flex;      justify-content: center;      align-items: center;      width: 10px;      height: 10px;      background: transparent;      border: 1px solid black;      padding: 2px    }    input[type="checkbox"] {      display: none;    }    input:checked+.pseudochekbox::before {      content: "";      width: 8px;      height: 8px;      background: black;      display: block;    }    .conf_images{        position:relative;        margin-bottom:256px;    }            </style></head>
+  <body>
+<div class="doc">
+        <div class="doc-header">
+            <img src="https://tingard.ru/upload/vehicleconf/tingerlogo.png" alt="" class="doc-header-logo">
+            <div class="doc-header-company">
+                <span>
+                    ООО "Механика"<br>
+                    162611, РФ, Вологодская область, г. Череповец<br>
+                    ул. Окружная, д. 18, строение 6, офис 1
+                </span>
+            </div>
+            <div class="doc-header-contact">
+                <a href="tel:+78003502505">
+                    <img src="https://tingard.ru/upload/vehicleconf/phone.svg"
+                        alt="i">
+                    <span>8 (800) 350-25-05</span>
+                </a>
+                <a href="mailto:help@tinger.ru">
+                    <img src="https://tingard.ru/upload/vehicleconf/email.svg"
+                        alt="i">
+                    <span>help@tinger.ru</span>
+                </a>
+                <a href="https://www.tinger.ru/">
+                    <img src="https://tingard.ru/upload/vehicleconf/website.svg"
+                        alt="i">
+                    <span>www.tinger.ru</span>
+                </a>
+            </div>
+        </div>
+        <div class="doc-line">
+            <h1 class="doc-line-title">
+                <span>Вездеход TINGER TF4 Pro (улучшенный)</span>
+            </h1>
+        </div>
+        <div class="doc-machine-data">
+            <div class="doc-machine-data-char">
+                <h2>Характеристики</h2>
+                <table>
+                    <tbody>
+                       
+                            <tr class='grayLine' >
+                              <td>Габариты (Д x Ш x В)</td>
+                              <td>4500 мм х 2500 мм х 2520 мм</td>
+                            </tr>
+                          
+                            <tr  >
+                              <td>Габариты с кунгом (Д x Ш x В)</td>
+                              <td>4500 мм х 2500 мм х 2550 мм</td>
+                            </tr>
+                          
+                            <tr class='grayLine' >
+                              <td>Колёса</td>
+                              <td>Radial 1400 x 650 - 21</td>
+                            </tr>
+                          
+                            <tr  >
+                              <td>Клиренс</td>
+                              <td>500 мм</td>
+                            </tr>
+                          
+                            <tr class='grayLine' >
+                              <td>Давление на грунт</td>
+                              <td>0.1 bar / 1.56 psi</td>
+                            </tr>
+                          
+                            <tr  >
+                              <td>Грузоподъёмность</td>
+                              <td>600 кг</td>
+                            </tr>
+                          
+                            <tr class='grayLine' >
+                              <td>Рулевое управление</td>
+                              <td>гидрообъёмное</td>
+                            </tr>
+                          
+                            <tr  >
+                              <td>Трансмиссия</td>
+                              <td>5-ступенчатая МКПП + раздаточная коробка передач</td>
+                            </tr>
+                          
+                            <tr class='grayLine' >
+                              <td>Максимальная скорость (суша) *</td>
+                              <td>80 км/ч</td>
+                            </tr>
+                          
+                            <tr  >
+                              <td>Максимальная скорость (вода) </td>
+                              <td> 4 км/ч</td>
+                            </tr>
+                          
+                            <tr class='grayLine' >
+                              <td>Мощность двигателя</td>
+                              <td>90 л. с.</td>
+                            </tr>
+                          
+                            <tr  >
+                              <td>Запас топлива</td>
+                              <td>75 л</td>
+                            </tr>
+                          
+                            <tr class='grayLine' >
+                              <td>Количество пассажирских мест</td>
+                              <td>1</td>
+                            </tr>
+                          
+                            <tr  >
+                              <td>Общее количество посадочных мест **</td>
+                              <td>5</td>
+                            </tr>
+                          
+                    </tbody>
+                </table>
+                <span class="primechanie">* Требуется дополнительное оборудование</span>
+                <br>
+                <span class="primechanie">** Конструкционная масса</span>
+            </div>
+            <div class="doc-machine-data-image">
+                <div class="conf_images">
+                <img src="https://tinger.ru/upload/uf/15d/9xgdk940oahvu9f3ynlrquixwba4bnen/Red_Front_TF4_Pro.png" style="position:absolute; z-index:1;" /><img src="https://tinger.ru/upload/uf/f36/oxe09g4xvq90x8bs0u3dfo4pehhdujpe/Red_Front_Kung_Pro.png" style="position:absolute; z-index:2;" /><img src="https://tinger.ru/upload/uf/55b/n8d9bcy1rhvte4qolk9gr7ldpab4z7e6/Element_Winch_FRONT_Pro.png" style="position:absolute; z-index:3;" /><img src="https://tinger.ru/upload/uf/5ba/t5op0vuoilbog88a9kqg8jclh94gg739/Element_TIRES_TINGER_FRONT_Pro.png" style="position:absolute; z-index:4;" /><img src="https://tinger.ru/upload/uf/11b/5vbj5pkejyxco5yxq1od39m0ll84w250/Element_Safety_Framework_FRONT_LOW_Kung_Pro.png" style="position:absolute; z-index:5;" /><img src="https://tinger.ru/upload/uf/fcf/ymam2b40ktr63e36egwu5ujhmhj8qfjp/Element_Safety_Framework_FRONT_Pro.png" style="position:absolute; z-index:6;" /><img src="https://tinger.ru/upload/uf/684/fdakyx94x26ueg9ms9mmcjqd7lv8v0vp/Element_RED_TINGER_FRONT_Pro.png" style="position:absolute; z-index:7;" /><img src="https://tinger.ru/upload/uf/109/4howl5hu9c72hink41gzqs32pq7anb5o/Element_Safety_Framework_FRONT_Kung_Pro.png" style="position:absolute; z-index:8;" /><img src="https://tinger.ru/upload/uf/d5d/zagx8tk2wghoclf59bk08ndfafqsffyr/Element_windcutter_FRONT_Pro.png" style="position:absolute; z-index:9;" /><img src="https://tinger.ru/upload/uf/9b2/hy0y6842p0wdjhxqgzat7c8rbxdvdc00/Element_Fuel_tank_FRONT_Pro.png" style="position:absolute; z-index:10;" />
+                </div>
+                
+                <div class="doc-machine-data-image-color"><span>Цвет корпуса — <b>Красный</b></span><div class="list-color"><span  style="background-color:black"></span><span  style="background-color:yellow"></span><span  style="background-color:blue"></span><span  style="background-color:orange"></span><span  style="background-color:#8a955d"></span><span  style="background-color:#765d1f"></span><span class='selected' style="background-color:red"></span></div></div>
+            </div>
+        </div>
+        <div class="doc-priem">
+            <h2>Преимущества</h2>
+            <table>
+                <tbody>
+                    <tr class="grayLine">
+                        <td>Электронный паспорт самоходной машины (эПСМ)</td>
+                    </tr>
+                    <tr>
+                        <td>Серийное производство</td>
+                    </tr>
+                    <tr class="grayLine">
+                        <td>Заводское качество</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <span class="base-price">Базовая цена модели: <b>2 898 400</b> ₽ (в том числе НДС 22%)</span>
+        <br>
+        <span class="base-price">Цена дополнительного оборудования: <b>1 231 500</b> ₽</span>
+        <div class="page-break"></div>
+        <table class="dop-table">
+            <thead> 
+                <tr>
+                    <td colspan="4">Основное оборудование</td>
+                </tr>
+            </thead>
+            <tbody>
+            
+                        <tr class="grayLine">
+                            <td><img src="https://tinger.ru/upload/uf/c28/wngzh9yff3iip31t2o2jwlqtjig0bo47/body-color-selection-perelomka (1).webp"/></td>
+                            <td>Выбор цвета кузова</td>
+                            <td>30 000 ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr >
+                            <td><img src="https://tinger.ru/upload/uf/148/lwqfhv6vkrodfycflkgd0pxn2frx6mch/tinger-tf-4-PSM (1).webp"/></td>
+                            <td>Электронный паспорт самоходной машины (эПСМ)</td>
+                            <td>172 500 ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine">
+                            <td><img src="https://tinger.ru/upload/uf/63d/ztvepo6i49isnwx02jwlbhnuzpswkyfn/tinger-tf-4-diskii-standart (1).webp"/></td>
+                            <td>Диски сверхнизкого давления R21 (бедлок) (4 шт.)</td>
+                            <td>110 000 ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr >
+                            <td><img src="https://tinger.ru/upload/uf/df3/a8pjl9t95ktpstkzd0c4liy31nlwobor/_Зеркало-заднего-вида (1).png"/></td>
+                            <td>Зеркала заднего вида (2 шт.)</td>
+                            <td>— ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine">
+                            <td><img src="https://tinger.ru/upload/uf/fc6/vxb23o0kr9iq2t99tf1cbywu7lg5g70m/tf4-otopitel-salina-zhidkostniy (1).webp"/></td>
+                            <td>Радиатор отопителя салона (жидкостный)</td>
+                            <td>41 000 ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr >
+                            <td><img src="https://tinger.ru/upload/uf/4e8/27xmy6xyea5p6kbnseay0blux1vmr3ko/lobovoe-stecklo (1).webp"/></td>
+                            <td>Лобовое стекло с открыванием вперёд</td>
+                            <td>— ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine">
+                            <td><img src="https://tinger.ru/upload/uf/736/0h8kmp8y3wvt126moq8f4h24kena3mzx/tinger-tf-4-remen_bezopasnosti (1).webp"/></td>
+                            <td>Ремни безопасности передние (2 шт.)</td>
+                            <td>4 500 ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr >
+                            <td><img src="https://tinger.ru/upload/uf/ccf/piouee1nff4ommw2f7fe4tzuiz3scbne/panel-ypravlenia (1).webp"/></td>
+                            <td>Панель управления с гнёздами 12V и USB</td>
+                            <td>— ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine">
+                            <td><img src="https://tinger.ru/upload/uf/772/x37n9g4yx79i6jbr6tg7sefe9ziqdlb6/sidenia (1).webp"/></td>
+                            <td>Сиденья передние эргономичные (2 шт.)</td>
+                            <td>54 000 ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr >
+                            <td><img src="https://tinger.ru/upload/uf/64f/63dhlc5pxz44jx1r9mt2ftskbeheoyfl/steckloochestitel (1).webp"/></td>
+                            <td>Стеклоочиститель лобового стекла</td>
+                            <td>16 000 ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine">
+                            <td><img src="https://tinger.ru/upload/uf/fd3/7h61s835au9vkyeh2x1m9nq05wbhmw2k/electronnaya-panel (1).webp"/></td>
+                            <td>Электронная панель приборов (версия 1.0)</td>
+                            <td>— ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr >
+                            <td><img src="https://tinger.ru/upload/uf/19e/9j5x1gmp6hnj7erdag74dfeom3zadzik/shakly (1).webp"/></td>
+                            <td>Буксировочные скобы (шаклы), (2 шт.)</td>
+                            <td>500 ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                
+                        <tr >
+                            <td><img src="https://tinger.ru/upload/uf/818/2k8y88fkn2g7a9mvq6784v4h7whzns9w/shini-prohodimosty.webp"/></td>
+                            <td>Шины сверхвысокой проходимости TINGER (4 шт.)</td>
+                            <td>368 000 ₽</td>
+                            <td><input type="checkbox" checked/><div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+               
+            </tbody>
+        </table>
+        <span class="base-price">Базовая цена модели: <b>2 898 400</b> ₽ (в том числе НДС 22%)</span>
+        <div class="page-break"></div>
+        <table class="dop-table">
+            <thead>
+                <tr>
+                    <td colspan="4">Дополнительное оборудование</td>
+                </tr>
+            </thead>
+            <tbody>
+             
+                        <tr class="grayLine" >
+                            <td><img src="https://tinger.ru/upload/uf/8eb/wq1j2dbksedisa23ryh9jk073kbfa01s/tinger-tf-4-blokirovka (1) (1).webp"/></td>
+                            <td>Блокировка дифференциала задняя**</td>
+                            <td>98 500 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr  >
+                            <td><img src="https://tinger.ru/upload/uf/ee9/qf5ay095saa2h1tqzmbihlf0nhrj7wrq/poluosi (1).webp"/></td>
+                            <td>Усиленные полуоси TINGER 10 задние (комплект 2 шт.)</td>
+                            <td>50 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine" >
+                            <td><img src="https://tinger.ru/upload/uf/28b/bq65mm0ykbuqw2i2wq12mmxbbr3vp57l/tinger-tf-4-blokirovka (2).webp"/></td>
+                            <td>Блокировка дифференциала передняя**</td>
+                            <td>98 500 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr  >
+                            <td><img src="https://tinger.ru/upload/uf/89a/cthej4tzd8xb5mzsa2j0nlcgavsc9x12/poluosi (2).webp"/></td>
+                            <td>Усиленные полуоси TINGER 10 передние (комплект 2 шт.)</td>
+                            <td>50 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine" >
+                            <td><img src="https://tinger.ru/upload/uf/47d/vpcnvvmin99i1i197xmsehnq571mi4ux/31. tinger-tf-4-pro-karkas_bamper.webp"/></td>
+                            <td>Каркас защитный бампера</td>
+                            <td>20 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr  >
+                            <td><img src="https://tinger.ru/upload/uf/505/y8b0g1nb59eeyv5crifno9wp34km4kjg/32. tinger-tf-4-pro-karkas_kabina.webp.webp"/></td>
+                            <td>Каркас защитный кабины</td>
+                            <td>30 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine" >
+                            <td><img src="https://tinger.ru/upload/uf/a3f/1c01iqhfwwzpyjtokmqu6nxnshgqdda2/33. tinger-tf-4-pro-karkas_kung.webp.webp"/></td>
+                            <td>Каркас защитный кунга</td>
+                            <td>50 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr  >
+                            <td><img src="https://tinger.ru/upload/uf/261/j930gruf48sorhel22n9do7tr1trt0cl/28. kung tf4 pro (1).webp"/></td>
+                            <td>Кунг стеклопластиковый с каркасом, люком, сдвижными окнами и внутренней отделкой</td>
+                            <td>369 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine" >
+                            <td><img src="https://tinger.ru/upload/uf/b6c/5rhxyrbwl4pdcwtu7ecigfec52bogvub/tinger-tf-4-lebedka (1).webp"/></td>
+                            <td>Лебёдка электрическая T5500</td>
+                            <td>63 900 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr  >
+                            <td><img src="https://tinger.ru/upload/uf/aae/2ldtxlnu6tvj4bial3f9fxbdxulg3t1s/tf4-podkachka (1).webp"/></td>
+                            <td>Централизованная турбо система подкачки колёс</td>
+                            <td>99 400 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine" >
+                            <td><img src="https://tinger.ru/upload/uf/26e/iihnllyt4r240h5qhnbd4j4vyz31rnyw/tinger-tf-4-kolpaki_zashitnie (1).webp"/></td>
+                            <td>Колпаки защитные на диски сверхнизкого давления (4 шт.)</td>
+                            <td>12 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr  >
+                            <td><img src="https://tinger.ru/upload/uf/34d/facln1qg25wa7pzqmw3u4alz3fo0tz4u/tinger-tf-4-baki-plavychesti (1).webp"/></td>
+                            <td>Водоизмещающие баки в диски сверхнизкого давления (комплект, 4 шт.)</td>
+                            <td>18 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine" >
+                            <td><img src="https://tinger.ru/upload/uf/123/iy68zsti2o9i0evhwvq9huuuidet8428/tinger-tf-4-diskii-red.webp"/></td>
+                            <td>Красные бедлоки (TINGER)</td>
+                            <td>6 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr  >
+                            <td><img src="https://tinger.ru/upload/uf/f63/0vjtkuha72wzrjf31ouyxvz685ypgrpa/tinger-tf4-long-spalnie-mesta.webp"/></td>
+                            <td>Спальные места (комплект 2 шт.)</td>
+                            <td>18 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine" >
+                            <td><img src="https://tinger.ru/upload/uf/60a/4oqkh0xfsfy8196m973au5wld1113y6j/tinger-tf4-long-zadnie-sidenia.webp"/></td>
+                            <td>Боковое сиденье (комплект 2 шт.)</td>
+                            <td>30 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr  >
+                            <td><img src="https://tinger.ru/upload/uf/db9/sa7gwe4ein3hamk9xf0hy5i31ww58e7l/25. Stolik (1).webp"/></td>
+                            <td>Столик складной/откидывающийся</td>
+                            <td>16 200 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine" >
+                            <td><img src="https://tinger.ru/upload/uf/470/z5ze0tednkn2vcjuf5izq2u3yxi67ur8/planar (1).webp"/></td>
+                            <td>Автономный бензиновый отопитель кунга «Планар»</td>
+                            <td>69 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr  >
+                            <td><img src="https://tinger.ru/upload/uf/0c9/fhrbhrt7hpuiv5r96tvhgk9bu2w8zhbq/tinger-tf-4-kamera-zadnyergo-vida (1).webp"/></td>
+                            <td>Камера заднего вида</td>
+                            <td>25 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine" >
+                            <td><img src="https://tinger.ru/upload/uf/1a5/skbv0a4umzrzjv4o7cm41jbja6ghehfr/веткорезы-1.webp"/></td>
+                            <td>Веткорезы</td>
+                            <td>6 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr  >
+                            <td><img src="https://tinger.ru/upload/uf/f4b/kqukcbrquzw47irpdl9t5pkut4nbeq74/Дверь КУНГА с замком.webp"/></td>
+                            <td>Дверь КУНГА с замком</td>
+                            <td>30 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine" >
+                            <td><img src="https://tinger.ru/upload/uf/d87/yof6mk8tjnahwyw9xwvsh84g08uc2n39/Окно сдвижное КУНГА.webp"/></td>
+                            <td>Окно сдвижное КУНГА</td>
+                            <td>11 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr  >
+                            <td><img src="https://tinger.ru/upload/uf/da8/74on73uyuvzt6yevk2cule05kx9zytqo/Окно сдвижное КАБИНЫ.webp"/></td>
+                            <td>Окно сдвижное КАБИНЫ</td>
+                            <td>11 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr class="grayLine" >
+                            <td><img src="https://tinger.ru/upload/uf/bde/yl5v31wx3mpnmtxu95w1he322saixj70/Канистры топливные.webp"/></td>
+                            <td>Канистры топливные, 2шт.</td>
+                            <td>25 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+                        <tr  >
+                            <td><img src="https://tinger.ru/upload/uf/e0a/xzxa5y5okp4acgzyiz9u2lmzsxxqtm5p/Дополнительный АКБ с блоком в КУНГ.webp"/></td>
+                            <td>Дополнительный АКБ с блоком в КУНГ </td>
+                            <td>25 000 ₽</td>
+                            <td><input type="checkbox" checked /> <div class="pseudochekbox"></div></td>
+                        </tr>   
+                    
+               
+            </tbody>
+        </table>
+        <span class="base-price">Цена дополнительного оборудования: <b>1 231 500</b> ₽</span>
+        <div class="doc-footer">
+            <span class="doc-footer-garanty"><b>Гарантия производителя 24 месяца или 200 моточасов <br>
+                    (в зависимости от того, что наступит раньше)</b>
+            </span>
+            <hr>
+            <div class="doc-footer-bottom">
+                <span>
+                    Будем рады подробно обсудить с Вами все детали <br>
+                    данного предложения в удобное для Вас время.
+                </span>
+                <img src="https://tingard.ru/upload/vehicleconf/tingerlogo.svg" alt="logo">
+                <div class="doc-header-contact">
+                    <a href="tel:+78003502505">
+                        <img src="https://tingard.ru/upload/vehicleconf/phone.svg"
+                            alt="i">
+                        <span>8 (800) 350-25-05</span>
+                    </a>
+                    <a href="mailto:help@tinger.ru">
+                        <img src="https://tingard.ru/upload/vehicleconf/email.svg"
+                            alt="i">
+                        <span>help@tinger.ru</span>
+                    </a>
+                    <a href="https://www.tinger.ru/">
+                        <img src="https://tingard.ru/upload/vehicleconf/website.svg"
+                            alt="i">
+                        <span>www.tinger.ru</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+    

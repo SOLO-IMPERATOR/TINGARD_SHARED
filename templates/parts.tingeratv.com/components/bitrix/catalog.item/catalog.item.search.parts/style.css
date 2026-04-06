@@ -1,0 +1,114 @@
+.parts-search__titles,
+.parts-search__item {
+	display: grid;
+	grid-template-columns: 40px 100px 1fr 100px;
+	align-items: center;
+	gap: 20px;
+	padding: 10px;
+}
+
+.parts-search__titles-sku,
+.parts-search__item-sku,
+.parts-search__titles-price,
+.parts-search__item-price {
+	text-align: center;
+}
+
+.parts-search__titles {
+	font-weight: 700;
+}
+
+.parts-search__categories {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.parts-search__categories-link {
+	font-size: 12px;
+	color: var(--dark);
+}
+
+.parts-search__item-name {
+	display: grid;
+	gap: 5px;
+}
+
+.parts-search__item-availability {
+	display: inline-block;
+	vertical-align: middle;
+	height: 10px;
+	width: 10px;
+	margin-right: 10px;
+	border-radius: 50%;
+	position: relative;
+}
+
+.parts-search__item-availability_status_available {
+	background: var(--deep-blue);
+}
+
+.parts-search__item-availability_status_not-available {
+	background: #ff0000;
+}
+
+.parts-search__item-availability_status_waiting {
+	background: #d6af00;
+}
+
+.parts-search__item-availability_status_long-waiting {
+	background: #7d6600;
+}
+
+.parts-search__item-img-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	background: var(--light);
+	padding: 3px;
+}
+
+@media (max-width: 767px) {
+	.parts-search__titles,
+	.parts-search__item {
+		display: grid;
+		grid-template-columns: 40px 100px 1fr;
+		align-items: center;
+		gap: 20px;
+		padding: 10px;
+	}
+
+	.parts-search__titles {
+		display: none;
+	}
+
+	.parts-search__item-name {
+		grid-column: 1 / 4;
+		grid-row: 2 / 3;
+	}
+
+	.parts-search__item-price,
+	.parts-search__titles-price {
+		text-align: right;
+	}
+
+	.parts-search__item-sku,
+	.parts-search__titles-sku {
+		text-align: left;
+	}
+}
+
+@media (max-width: 479px) {
+	.parts-search__item-container {
+		width: calc(100% + 40px);
+		margin-right: -20px;
+		margin-left: -20px;
+		border-radius: 0;
+	}
+
+	.parts-search__item {
+		padding: 10px 20px;
+	}
+}

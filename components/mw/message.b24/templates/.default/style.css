@@ -1,0 +1,64 @@
+/* 
+ Comment Text 
+*/
+:root {
+    --white: "#ffffff";
+}
+
+.messages {
+    display: grid;
+    gap: 20px;
+}
+.messages__date {
+    margin-top: 30px;
+    text-align: center;
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    align-items: center;
+    gap: 15px;
+    color: #999999;
+}
+.messages__item_type_dealer {
+    background-color: #f2f3f5;
+}
+.messages__item {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+}
+
+.message__docs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 30px 0 0 0;
+}
+
+.message__doc {
+    position: relative;
+    display: -webkit-box; /* Изменено с flex на -webkit-box */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Две строки */
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    height: 40px;
+    padding: 0 0 0 40px;
+    overflow: hidden;
+    max-width: 300px;
+}
+
+.message__doc::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("./doc-icon.svg");
+}

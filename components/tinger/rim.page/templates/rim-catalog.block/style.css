@@ -1,0 +1,59 @@
+.rim-catalog__list {
+	list-style: none;
+	margin: 0 0 30px 0;
+	padding: 0;
+}
+
+.rim-catalog__item {
+	display: grid;
+	gap: 20px;
+	border: 1px solid var(--light-blue);
+	padding: 20px;
+}
+
+.rim-catalog__chars {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.rim-catalog__chars-item {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+	padding: 5px 10px;
+	font-size: 12px;
+}
+
+.rim-catalog__chars-item:nth-child(odd) {
+	background: var(--light-blue);
+}
+
+.rim-catalog__chars-name {
+	font-weight: 600;
+}
+
+.rim-catalog__price {
+	text-align: center;
+	font-weight: 700;
+}
+
+.rim-catalog__personal-btn-container {
+	display: grid;
+	grid-template-columns: max-content;
+	justify-content: center;
+	padding-top: 20px;
+}
+
+@media (max-width: 1279px) {
+	.rim-catalog__swiper {
+		padding: 0 20px;
+		width: calc(100% + 40px);
+		margin-left: -20px;
+		margin-right: -20px;
+	}
+
+	.rim-catalog__item {
+		width: 300px;
+	}
+}

@@ -1,0 +1,64 @@
+.catalog-sections {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+}
+
+.catalog-sections__link {
+	display: grid;
+	padding: 20px;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 30px;
+	text-decoration: none;
+	background-color: var(--light-blue);
+	background-image: url("data:image/svg+xml,%0A%3Csvg width='252' height='252' viewBox='0 0 252 252' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='58.597' height='58.597' transform='matrix(-0.707107 0.707107 0.707107 0.707107 209.891 85.1944)' fill='white'/%3E%3Crect opacity='0.6' width='93.7552' height='93.7552' transform='matrix(-0.707107 0.707107 0.707107 0.707107 157.803 59.3875)' fill='white'/%3E%3Crect opacity='0.4' width='128.913' height='128.913' transform='matrix(-0.707107 0.707107 0.707107 0.707107 91.7891 34.8098)' fill='white'/%3E%3C/svg%3E%0A");
+	background-repeat: no-repeat;
+	background-position: right 10% center;
+	background-size: auto 90%;
+	transition: all 0.2s ease;
+}
+
+.catalog-sections__link:hover {
+	background-color: var(--yellow);
+	background-size: auto 110%;
+}
+
+.catalog-section__info {
+	display: grid;
+	grid-template-rows: max-content 1fr max-content;
+	gap: 10px;
+}
+
+.catalog-section__img-container {
+	padding: 15px;
+}
+
+.catalog-section__title {
+	color: var(--black);
+}
+
+.catalog-section__price {
+	color: var(--deep-blue);
+	font-size: 13px;
+}
+
+.catalog-section__btn-container {
+	display: grid;
+	grid-template-columns: max-content;
+}
+
+.catalog-section__btn {
+	color: var(--deep-blue);
+	background: var(--white);
+	padding: 5px 10px;
+	border-radius: 1000px;
+}
+
+@media (max-width: 767px) {
+	.catalog-sections {
+		grid-template-columns: 1fr;
+	}
+}

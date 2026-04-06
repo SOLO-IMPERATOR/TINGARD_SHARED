@@ -1,0 +1,95 @@
+.contacts-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: 100px;
+    margin-bottom: 80px;
+}
+
+.contacts-info__title {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.contacts-info__address {
+    grid-area: 3 / 1 / 4 / 2;
+}
+
+.contacts-info__departments {
+    grid-area: 1 / 2 / 4 / 3;
+}
+
+/* contacts */
+.contacts {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    column-gap: 100px;
+}
+
+.contacts__offer {
+    position: relative;
+    padding: 90px 20px;
+}
+
+.contacts__offer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% + 100vw);
+    height: 100%;
+    background: var(--super-deep-gray);
+    z-index: -1;
+}
+
+.contacts__offer-title {
+    color: var(--light);
+    margin-bottom: 50px;
+}
+
+.contacts__offer-tagline {
+    display: block;
+    color: var(--light);
+}
+
+.contacts__offer-link {
+    display: block;
+    color: var(--light);
+}
+
+.contacts__form {
+    padding: 90px 0;
+}
+
+.contacs__form-header {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    column-gap: 60px;
+}
+
+.contacts__form-title {
+    margin-bottom: 40px;
+}
+
+.contacts__form-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, max-content);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.contacts__form-name {
+    grid-area: 1 / 1 / 2 / 3;
+}
+
+.contacts__form-phone {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.contacts__form-email {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.contacts__form-message {
+    grid-area: 3 / 1 / 4 / 3;
+}

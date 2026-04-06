@@ -1,0 +1,182 @@
+/* Страница категории первого уровня */
+.parts-categories__list {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	gap: 20px;
+}
+
+.parts-categories__item {
+	border: 1px solid var(--blue);
+	display: grid;
+	grid-template-rows: 1fr max-content;
+	border-radius: 10px;
+}
+
+.parts-categories__head {
+	background: var(--light-blue);
+	padding: 10px 20px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+.parts-categories__name-link {
+	color: var(--dark);
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.parts-categories__img-container {
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	overflow: hidden;
+}
+
+.parts-categories__img-container::before {
+    content: '';
+    padding-bottom: 100%;
+}
+
+.parts-categories__img {
+	padding: 20px;
+}
+
+.part-categories__img-link {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: var(--light);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.parts-categories__name {
+	z-index: 1;
+}
+
+.parts-category__lazy-load-btn {
+	width: 100%;
+	margin-top: 20px;
+}
+
+/* Страница категории второго уровня */
+.parts-category__img {
+/* 	max-width: 728px; */
+	width: auto;
+}
+
+@media (max-width: 999px) {
+	.parts-categories__list {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.parts-category__img-inner::-webkit-scrollbar {
+		display: none;
+	}
+
+	.parts-category__img-inner {
+		overflow-x: scroll;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+		margin-left: -20px;
+		margin-right: -20px;
+		width: calc(100% + 40px);
+	}
+
+	.parts-category__img {
+		width: 999px;
+		padding: 0 20px;
+	}
+}
+
+@media (max-width: 767px) {
+	.parts-categories__list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+}
+
+@media (max-width: 479px) {
+	.parts-categories__list {
+		grid-template-columns: 1fr;
+	}
+}
+
+
+
+
+
+
+
+/* parts-category__scheme */
+.parts-category__scheme {
+	border: 1px solid var(--gray);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.parts-category__scheme-title {
+	background: var(--gray);
+	padding: 10px 20px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.parts-category__scheme-title_accent {
+	font-weight: 600;
+}
+
+.parts-category__scheme-zoom {
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+    cursor: zoom-in;
+}
+
+.parts-category__scheme-img {
+    display: block;
+    width: 100%;
+    opacity: 1;
+}
+
+.parts-category__scheme-zoom:hover {
+    background-size: 200%;
+}
+
+.parts-category__scheme-zoom_300:hover {
+    background-size: 300%;
+}
+
+.parts-category__scheme-zoom_400:hover {
+    background-size: 400%;
+}
+
+.parts-category__scheme-zoom:hover .parts-category__scheme-img {
+    opacity: 0;
+}
+
+.parts-category__scheme-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: #fff;
+    display: none;
+}
+
+.parts-category__scheme-loading .parts-category__scheme-loader {
+    display: block;
+}

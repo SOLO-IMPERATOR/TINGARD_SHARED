@@ -1,0 +1,11 @@
+.contacts-list {
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	column-gap: 80px;
+}
+
+@media (max-width: 999px) {
+	.contacts-list {
+		grid-template-columns: 1fr;
+	}
+}

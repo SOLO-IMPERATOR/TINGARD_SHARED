@@ -1,0 +1,41 @@
+.profile__nav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	gap: 10px;
+	grid-auto-columns: max-content;
+	grid-auto-flow: column;
+}
+
+.profile__nav-link {
+	display: block;
+	padding: 10px 15px;
+	border-radius: 10px;
+	border: 1px solid var(--deep-blue);
+}
+
+.profile__data {
+	display: grid;
+	gap: 20px;
+}
+
+@media (max-width: 767px) {
+	.profile__nav-container {
+		overflow-x: auto;
+		margin-left: -20px;
+		margin-right: -20px;
+		width: calc(100% + 40px);
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+
+	.profile__nav-container::-webkit-scrollbar {
+		display: none;
+	}
+
+	.profile__nav {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}

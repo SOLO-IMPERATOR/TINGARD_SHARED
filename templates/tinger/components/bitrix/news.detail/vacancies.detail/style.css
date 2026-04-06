@@ -1,0 +1,138 @@
+.vacancy__preview {
+	margin-bottom: 30px;
+}
+
+.vacancy__head {
+	margin-bottom: 30px;
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	justify-content: space-between;
+}
+
+.vacancy__slider {
+	margin-bottom: 10px;
+}
+
+.vacancy__thumbs-slider {
+	margin-bottom: 20px;
+}
+
+.vacancy__thumbs-item {
+	position: relative;
+}
+
+.vacancy__thumbs-item:hover {
+	cursor: pointer;
+}
+
+.vacancy__thumbs-item_active:hover {
+	cursor: default;
+}
+
+.vacancy__thumbs-item::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.5);
+	z-index: 2;
+	transition: background-color 0.2s ease;
+}
+
+.vacancy__thumbs-item_active::after {
+	background-color: transparent;
+}
+
+.vacancy__thumbs-slider-img {
+	background: var(--light-gray);
+}
+
+.vacancy__img {
+	background: var(--light-gray);
+}
+
+.vacancy__thumbs-arrows {
+	margin-bottom: 50px;
+}
+
+.vacancy__body {
+	padding-bottom: 40px;
+}
+
+.vacancy__bar {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid var(--gray);
+	border-bottom: 1px solid var(--gray);
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.vacancy__manager {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	grid-auto-rows: 1fr;
+	column-gap: 10px;
+	align-items: center;
+}
+
+.vacancy__manager-img-container {
+	position: relative;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	overflow: hidden;
+	grid-row: 1 / 4;
+}
+
+.vacancy__manager-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.vacancy__manager-name {
+	font-weight: 600;
+	display: flex;
+	align-items: flex-end;
+}
+
+.vacancy__manager-label {
+	font-size: 13px;
+	display: flex;
+	align-items: flex-start;
+}
+
+.vacancy__bottom-btn-container {
+	padding-top: 30px;
+}
+
+@media (max-width: 767px) {
+	.vacancy__head {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+}
+
+@media (max-width: 479px) {
+	.vacancy__bar {
+		grid-template-columns: 1fr;
+	}
+
+	.vacancy__manager {
+		border-bottom: 1px solid var(--gray);
+		padding-bottom: 10px;
+	}
+
+	.vacancy__share {
+		padding-top: 10px;
+	}
+}

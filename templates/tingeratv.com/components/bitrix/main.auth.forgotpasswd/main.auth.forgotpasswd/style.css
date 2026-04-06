@@ -1,0 +1,8 @@
+.reset-password__fields {
+	display: grid;
+	gap: 20px;
+}
+
+.reset-password__links {
+	display: inline-grid;
+}

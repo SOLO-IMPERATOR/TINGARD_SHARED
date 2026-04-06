@@ -1,0 +1,58 @@
+.video {
+	position: relative;
+	max-width: 1920px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.video__container {
+	position: relative;
+	object-fit: cover;
+}
+
+.video__play {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	margin: 0;
+	box-shadow: none;
+	background-color: rgba(0, 0, 0, 0.1);
+	background-image: url("data:image/svg+xml,%3Csvg width='75' height='87' viewBox='0 0 75 87' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M75 43.5L-4.07833e-06 86.8013L-2.92811e-07 0.198727L75 43.5Z' fill='white'/%3E%3C/svg%3E%0A");
+	background-size: auto 15%;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition: background 0.2s;
+	z-index: 2;
+}
+
+.video__play:hover,
+.video__play:focus,
+.video__play:active {
+	background-color: rgba(0, 0, 0, 0.2);
+	background-size: auto 20%;
+	cursor: pointer;
+}
+
+.video__img {
+	width: 100%;
+}
+
+@media (max-width: 767px) {
+	.video__img {
+		height: 320px;
+		object-fit: cover;
+		object-position: center;
+	}
+}
+
+@media (max-width: 479px) {
+	.video__img {
+		height: 260px;
+	}
+}

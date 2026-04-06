@@ -1,0 +1,37 @@
+
+/* equipment */
+.equipment {
+	background: var(--light-blue);
+}
+.equipment__list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.equipment__item {
+	background: var(--light);
+	padding: 30px;
+	display: grid;
+	grid-template-rows: max-content 1fr;
+    border-radius: 10px;
+}
+
+.equipment_description {
+	display: grid;
+	grid-template-rows: 1fr max-content max-content;
+	gap: 20px;
+}
+
+.equipment__btn-container {
+	display: grid;
+}
+
+@media (max-width: 767px) {
+	.equipment__list {
+		grid-template-columns: 1fr;
+	}
+}

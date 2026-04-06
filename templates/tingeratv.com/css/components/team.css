@@ -1,0 +1,15 @@
+.team__img {
+    height: 560px;
+    width: auto;
+    max-width: none;
+}
+
+.team__slide {
+    width: auto;
+}
+
+@media (max-width: 1279px) {
+    .team__img {
+        height: 420px;
+    }
+}

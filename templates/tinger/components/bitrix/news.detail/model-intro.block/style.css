@@ -1,0 +1,357 @@
+/* model strip */
+.model-strip {
+	width: 100%;
+	position: fixed;
+	background: rgba(255, 255, 255, 0.95);
+	top: 0;
+	left: 0;
+	z-index: 100;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+.model-strip_visible {
+	visibility: visible;
+	opacity: 1;
+}
+
+.model-strip__inner {
+	min-height: 70px;
+	display: grid;
+	grid-template-columns: repeat(3, max-content);
+	justify-content: space-between;
+	align-items: center;
+}
+
+.model-strip__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: max-content;
+	gap: 30px;
+}
+
+.model-strip__link {
+	color: var(--dark);
+}
+
+.model-strip__btn-container {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: max-content;
+	gap: 10px;
+}
+
+@media (max-width: 1279px) {
+	.model-strip__list {
+		gap: 20px;
+	}
+}
+
+@media (max-width: 767px) {
+	.model-strip__inner {
+		grid-template-columns: 1fr max-content;
+		gap: 15px;
+		padding-top: 15px;
+	}
+
+	.model-strip__nav {
+		grid-column: 1 / 3;
+		grid-row: 2 / 3;
+		border-top: 1px solid var(--dark);
+		padding: 15px 0;
+	}
+
+	.model-strip__btn-container {
+		grid-column: 2 / 3;
+		grid-row: 1 / 2;
+	}
+}
+
+@media (max-width: 479px) {
+	.model-strip__list {
+		gap: 15px;
+	}
+
+	.model-strip__btn_type_testdrive {
+		display: none !important;
+	}
+}
+
+@media (max-width: 359px) {
+	.model-strip__list {
+		gap: unset;
+		justify-content: space-between;
+	}
+}
+
+/* model intro */
+.model-intro {
+	position: relative;
+	min-height: 700px;
+	max-height: 900px;
+	height: 100vh;
+	display: grid;
+	grid-template-rows: 1fr max-content;
+}
+
+.model-intro__img-container {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.model-intro__img-container::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8) 100%);
+	z-index: 1;
+}
+
+.model-intro__img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+	background-color: var(--dark);
+}
+
+/* model intro body */
+.model-intro__body {
+	display: grid;
+	grid-auto-flow: row;
+	grid-auto-rows: max-content;
+	margin-top: auto;
+	margin-bottom: auto;
+	padding-top: 192px;
+	gap: 40px;
+}
+
+.model-intro__title {
+	color: var(--light);
+}
+
+.model-intro__subtitle {
+	color: var(--light);
+	max-width: 500px;
+}
+
+.model-intro__body-btn-container {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	gap: 10px;
+}
+
+/* model intro footer */
+.model-intro__footer {
+	height: 80px;
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	justify-content: space-between;
+	align-items: center;
+	/* border-top: 1px solid rgba(255, 255, 255, 0.5) */
+}
+
+.model-intro__price {
+	color: var(--light);
+}
+
+.model-intro__benefits {
+	display: grid;
+	grid-template-columns: repeat(3, max-content);
+	column-gap: 20px;
+}
+
+.model-intro__benefits-item {
+	color: var(--light);
+}
+
+.model-intro__september {
+	width: 450px;
+	background-color: rgba(255,255,255, 0.15);
+	border-radius: 10px;
+	padding: 15px;
+	backdrop-filter: blur(4px);
+	border: 4px solid rgb(255, 48, 48);
+}
+
+@media (max-width: 1279px) {
+	.model-intro {
+		min-height: 600px;
+		max-height: 800px;
+	}
+
+	.model-intro__breadcrumb {
+		margin-top: 70px;
+	}
+
+	.model-intro__footer {
+		height: 70px;
+	}
+}
+
+@media (max-width: 999px) {
+	.model-intro__footer {
+		height: auto;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+
+	.model-intro__benefits {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 767px) {
+	.model-intro__body {
+		margin-bottom: 30px;
+		gap: 30px;
+	}
+}
+
+@media (max-width: 479px) {
+	.model-intro__footer {
+		grid-template-columns: 1fr;
+		row-gap: 15px;
+	}
+}
+
+@media (max-width: 767px) {
+	.hide-mobile {
+		display: none;
+	}
+}
+
+/* model-intro__skidka */
+.model-intro__skidka {
+	position: relative;
+}
+
+.model-intro__skidka_page_tf4pro {
+	margin-bottom: 20px;
+}
+
+.model-intro__skidka_page_rt2 {
+	margin-top: 20px;
+}
+
+.model-intro__skidka-img {
+	backdrop-filter: blur(5px);
+	border-radius: 2%;
+	box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.5);
+}
+
+.model-intro__skidka-additional-img {
+	position: absolute;
+	left: 25px;
+	z-index: 2;
+}
+
+.model-intro__skidka_page_rt2 .model-intro__skidka-additional-img {
+	bottom: 100%;
+	transform: translateY(50%);
+}
+
+.model-intro__skidka_page_tf4pro .model-intro__skidka-additional-img {
+	top: 100%;
+	transform: translateY(-50%);
+}
+
+@media (max-width: 479px) {
+	.model-intro__skidka-additional-img {
+		left: 10px;
+	}
+}
+
+/* скидка (вёрстка) */
+.model-intro__deal {
+	position: relative;
+}
+
+.models-intro__deal-label {
+	background-color: #FF0000;
+	position: absolute;
+	left: 20px;
+	top: 0;
+	color: white;
+	border-radius: 10px;
+	font-size: 20px;
+	font-weight: 400;
+	padding: 4px 20px;
+	transform: translateY(-50%);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	font-weight: 400;
+	z-index: 1;
+}
+
+.models-intro__deal-inner {
+	border-radius: 10px;
+	background: radial-gradient(60.48% 100% at 39.52% 0%, rgba(255, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(5px);
+	box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.1) inset;
+	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+	padding: 35px 35px 30px 35px;
+	color: white;
+	max-width: 420px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.models-intro__deal-subtitle {
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.models-intro__deal-title {
+	font-size: 50px;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.models-intro__deal-title_accent {
+	font-size: 24px;
+}
+
+.models-intro__deal-desc {
+	padding-top: 10px;
+	font-size: 15px;
+	font-weight: 500;
+}
+
+@media (max-width: 767px) {
+	.models-intro__deal-label {
+		font-size: 16px;
+	}
+
+	.models-intro__deal-inner {
+		padding: 30px 20px 15px 20px;
+	}
+
+	.models-intro__deal-subtitle {
+		font-size: 16px;
+	}
+
+	.models-intro__deal-title {
+		font-size: 32px;
+	}
+
+	.models-intro__deal-title_accent {
+		font-size: 16px;
+	}
+}

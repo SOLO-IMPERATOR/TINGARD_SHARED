@@ -1,0 +1,75 @@
+.vacancies-intro {
+	position: relative;
+    min-height: 700px;
+    max-height: 900px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding-top: 192px;
+	padding-bottom: 80px;
+}
+
+.vacancies-intro__img-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.vacancies-intro__img-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.4) 100%);
+}
+
+.vacancies-intro__img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.vacancies-intro__body {
+	display: grid;
+    grid-template-rows: repeat(3, max-content);
+    margin-top: auto;
+    margin-bottom: auto;
+    gap: 30px;
+}
+
+.vacancies-intro__title {
+	color: var(--white);
+}
+
+.vacancies-intro__subtitle {
+	color: var(--white);
+	max-width: 500px;
+}
+
+.vacancies-intro__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.vacancies-intro__list-item {
+	color: var(--white);
+}
+
+@media (max-width: 1279px) {
+	.vacancies-intro {
+		min-height: 500px;
+		max-height: 700px;
+		padding-bottom: 40px;
+	}
+
+}

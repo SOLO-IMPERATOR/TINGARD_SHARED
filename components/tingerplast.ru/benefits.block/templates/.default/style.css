@@ -1,0 +1,28 @@
+.benefits {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1px;
+	background: var(--medium-blue);
+	border: 1px solid var(--medium-blue);
+}
+
+.benefits__item {
+	background: var(--white);
+	padding: 20px;
+	display: grid;
+	grid-template-rows: 1fr max-content;
+}
+
+.benefits__value {
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+	.benefits {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}

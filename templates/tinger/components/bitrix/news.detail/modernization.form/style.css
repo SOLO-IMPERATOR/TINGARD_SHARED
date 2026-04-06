@@ -1,0 +1,4 @@
+.modernization-form__inner {
+    display: grid;
+    gap: 30px;
+}

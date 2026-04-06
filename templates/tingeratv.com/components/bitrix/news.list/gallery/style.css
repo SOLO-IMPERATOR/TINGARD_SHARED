@@ -1,0 +1,9 @@
+.gallery__item {
+	max-width: 480px;
+}
+
+@media (max-width: 999px) {	
+	.gallery__item {
+		max-width: 320px;
+	}
+}

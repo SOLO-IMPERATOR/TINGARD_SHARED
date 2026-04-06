@@ -1,0 +1,120 @@
+/*.contact-form {
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	column-gap: 80px;
+}
+
+.contact-form__head_background_dark {
+	position: relative;
+	padding-right: 80px;
+}
+
+.contact-form__head_background_dark::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100vw;
+	height: 100%;
+	background: var(--super-deep-gray);
+	z-index: -1;
+}
+
+.contact-form__body-head_subtitle_column {
+	display: grid;
+	grid-template-columns: 3fr 2fr;
+	column-gap: 40px;
+}
+
+.contact-form__body-fields {
+	display: grid;
+	column-gap: 20px;
+	grid-template-rows: max-content;
+}
+
+.contact-form__body-fields_content_email-and-textarea {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.contact-form__body-fields_content_email-and-textarea > .input-field_name_name {
+	grid-area: 1 / 1 / 2 / 3;
+}
+
+.contact-form__body-fields_content_email-and-textarea > .input-field_name_phone {
+	grid-area: 2 / 1 / 3 / 2;
+}
+
+.contact-form__body-fields_content_email-and-textarea > .input-field_name_email {
+	grid-area: 2 / 2 / 3 / 3;
+}
+
+.contact-form__body-fields_content_email-and-textarea > .textarea-field_name_question {
+	grid-area: 3 / 1 / 4 / 3;
+}
+
+
+
+.contact-form__body {
+	display: grid;
+	gap: 25px;
+}
+
+.contact-form__body_type_maintenance {
+	
+}
+
+
+
+
+
+
+
+
+
+.contact-form__body-fields_content_base {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.contact-form__btn-container {
+	display: grid;
+}
+
+@media (max-width: 999px) {
+	.contact-form {
+		grid-template-columns: 1fr;
+	}
+
+	.contact-form__head_background_dark {
+		padding-right: 0;
+	}
+
+	.contact-form__head_background_dark::before {
+		left: -30px;
+		right: -30px;
+		width: calc(100% + 60px);
+	}
+}
+
+@media (max-width: 479px) {
+	.contact-form__body-head {
+		grid-template-columns: 1fr;
+	}
+	
+	.contact-form__body-fields_content_email-and-textarea > .input-field_name_name,
+	.contact-form__body-fields_content_email-and-textarea > .input-field_name_phone,
+	.contact-form__body-fields_content_email-and-textarea > .input-field_name_email,
+	.contact-form__body-fields_content_email-and-textarea > .textarea-field_name_question {
+		grid-area: auto;
+	}
+
+	.contact-form__body-fields {
+		grid-template-columns: 1fr;
+	}
+
+	.contact-form__head_background_dark::before {
+		width: calc(100% + 40px);
+		left: -20px;
+		right: -20px;
+	}
+}
+*/

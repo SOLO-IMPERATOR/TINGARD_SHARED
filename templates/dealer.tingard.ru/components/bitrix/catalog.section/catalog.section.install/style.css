@@ -1,0 +1,66 @@
+/* install-table */
+.install-table__table {
+	border-collapse: collapse;
+    width: 100%;
+}
+
+.install-table__char-name {
+	font-weight: 600;
+	color: var(--color-blue);
+	border-bottom: 2px solid var(--color-yellow);
+	text-align: center;
+	padding: 15px;
+}
+
+.install-table__char-name:not(.install-table__char-name:nth-child(1)) {
+	background-color: var(--color-light-blue);
+}
+
+.install-table__char-name_type_dimensions {
+	border-top-left-radius: 10px;
+}
+
+.install-table__char-name_type_total-price {
+	border-top-right-radius: 10px;
+}
+
+.install-table__name {
+	padding: 15px;
+	font-weight: 600;
+}
+
+.install-table__value {
+	background-color: var(--color-light-blue);
+	text-align: center;
+	padding: 15px;
+}
+
+.install-table__line:not(.install-table__line:last-child) .install-table__value,
+.install-table__line:not(.install-table__line:last-child) .install-table__name {
+	border-bottom: 1px solid #D2DDEB;
+}
+
+.install-table__line:last-child .install-table__value {
+	border-bottom-right-radius: 10px;
+}
+.install-table__line:last-child .install-table__name {
+	border-bottom-left-radius: 10px;
+}
+
+.install-table__value_type_dimensions {
+	font-weight: 600;
+}
+
+.install-table__value_type_total-price {
+	font-weight: 600;
+}
+
+@media (max-width: 800px) {
+	.install-table {
+		overflow-x: scroll;
+	}
+
+	.install-table__table {
+		width: 840px;
+	}
+}

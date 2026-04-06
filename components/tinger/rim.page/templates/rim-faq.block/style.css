@@ -1,0 +1,52 @@
+.rim-faq__title {
+	margin-bottom: 40px;
+}
+
+.rim-faq__inner {
+	display: grid;
+	gap: 20px;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.rim-faq__item {
+	display: grid;
+	grid-template-rows: repeat(2, max-content);
+	background: var(--light-blue);
+	padding: 30px;
+	gap: 20px;
+	border-radius: 10px;
+}
+
+.rim-faq__desc {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: 40px;
+}
+
+@media (max-width: 999px) {
+	.rim-faq {
+		padding-top: 30px;
+		padding-bottom: 60px;
+	}
+
+	.rim-faq__title {
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 767px) {
+	.rim-faq__inner {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 479px) {
+	.rim-faq__desc {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+
+	.rim-faq__img {
+		max-width: 240px;
+	}
+}

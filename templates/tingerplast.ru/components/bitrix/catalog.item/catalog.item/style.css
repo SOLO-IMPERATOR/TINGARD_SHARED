@@ -1,0 +1,127 @@
+.preview-product {
+	border: 1px solid var(--medium-blue);
+	padding: 10px 15px;
+	display: grid !important;
+	gap: 15px;
+	grid-template-rows: repeat(3, max-content) 1fr max-content;
+	position: relative;
+}
+
+.preview-product__img-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.preview-product__link {
+	color: var(--black);
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.preview-product__labels {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.preview-product__chars-list {
+	display: grid;
+	grid-auto-flow: row;
+	grid-auto-rows: max-content;
+	gap: 5px;
+}
+
+.preview-product__chars-item {
+	display: flex;
+	align-items: stretch;
+	font-size: 13px;
+}
+
+.preview-product__chars-name {
+	color: var(--deep-blue);
+	padding-right: 5px;
+	flex: 0 0 auto;
+    max-width: 50%;
+    width: auto;
+}
+
+.preview-product__chars-separator {
+	flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+	border-bottom: 1px dotted var(--transparent-black);
+}
+
+.preview-product__chars-value {
+	padding-left: 5px;
+	flex: 0 0 auto;
+    max-width: 50%;
+    width: auto;
+}
+
+.preview-product__price-old {
+	color: var(--turquoise);
+	text-decoration: line-through;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.preview-product__price {
+	font-weight: 600;
+}
+
+.preview-product__offer {
+	display: grid;
+	gap: 10px;
+	/* grid-template-columns: repeat(2, max-content); */
+}
+
+/* .preview-product__cart-btn {
+	font-size: 0;
+	color: transparent;
+	background: transparent;
+	border: 0;
+	outline: none;
+	padding: 0;
+	margin: 0;
+}
+
+.preview-product__cart-btn svg {
+	stroke: #000;
+	transition: all 0.2s ease;
+}
+
+.preview-product__cart-btn svg:hover {
+	cursor: pointer;
+	stroke: #14909a;
+} */
+
+.preview-product__cart-btn {
+	width: 100%;
+}
+
+.preview-product__arrow {
+	stroke: #000;
+	transition: all 0.2s ease;
+}
+
+.preview-product__arrow svg:hover {
+	cursor: pointer;
+	stroke: #14909a;
+}
+
+.preview-product__stock {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	font-size: 11px;
+	color: var(--green);
+	line-height: 14px;
+}
+
+.preview-product__note {
+	padding-top: 10px;
+	font-size: 12px;
+}

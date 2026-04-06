@@ -1,0 +1,125 @@
+.model-gallery__preview {
+	margin-bottom: 30px;
+}
+
+.model-gallery__head {
+	margin-bottom: 30px;
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	justify-content: space-between;
+}
+
+.model-gallery__slider {
+	margin-bottom: 10px;
+}
+
+.model-gallery__thumbs-slider {
+	margin-bottom: 20px;
+}
+
+.model-gallery__thumbs-item {
+	position: relative;
+	opacity: 0.5;
+	transition: opacity 0.2s ease;
+}
+
+.model-gallery__thumbs-item:hover {
+	cursor: pointer;
+}
+
+.model-gallery__thumbs-item_active:hover {
+	cursor: default;
+}
+
+
+.model-gallery__thumbs-item_active {
+	opacity: 1;
+}
+
+.model-gallery__thumbs-slider-img {
+	background: var(--light-gray);
+}
+
+.model-gallery__img {
+	background: var(--light-gray);
+}
+
+.model-gallery__body {
+	padding-bottom: 40px;
+}
+
+.model-gallery__bar {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid var(--gray);
+	border-bottom: 1px solid var(--gray);
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.model-gallery__manager {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	grid-auto-rows: 1fr;
+	column-gap: 10px;
+	align-items: center;
+}
+
+.model-gallery__manager-img-container {
+	position: relative;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	overflow: hidden;
+	grid-row: 1 / 4;
+}
+
+.model-gallery__manager-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.model-gallery__manager-name {
+	font-weight: 600;
+	display: flex;
+	align-items: flex-end;
+}
+
+.model-gallery__manager-label {
+	font-size: 13px;
+	display: flex;
+	align-items: flex-start;
+}
+
+.model-gallery__bottom-btn-container {
+	padding-top: 30px;
+}
+
+@media (max-width: 767px) {
+	.model-gallery__head {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+}
+
+@media (max-width: 479px) {
+	.model-gallery__bar {
+		grid-template-columns: 1fr;
+	}
+
+	.model-gallery__manager {
+		border-bottom: 1px solid var(--gray);
+		padding-bottom: 10px;
+	}
+
+	.model-gallery__share {
+		padding-top: 10px;
+	}
+}

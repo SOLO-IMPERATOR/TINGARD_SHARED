@@ -1,0 +1,233 @@
+/* model strip */
+.model-strip {
+	width: 100%;
+	position: fixed;
+	background: rgba(255, 255, 255, 0.95);
+	top: 0;
+	left: 0;
+	z-index: 100;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+.model-strip_visible {
+	visibility: visible;
+	opacity: 1;
+}
+
+.model-strip__inner {
+	min-height: 70px;
+	display: grid;
+	grid-template-columns: repeat(3, max-content);
+	justify-content: space-between;
+	align-items: center;
+}
+
+.model-strip__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: max-content;
+	gap: 30px;
+}
+
+.model-strip__link {
+	color: var(--dark);
+}
+
+.model-strip__btn-container {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: max-content;
+	gap: 10px;
+}
+
+@media (max-width: 1279px) {
+	.model-strip__list {
+		gap: 20px;
+	}
+}
+
+@media (max-width: 767px) {
+	.model-strip__inner {
+		grid-template-columns: 1fr max-content;
+		gap: 15px;
+		padding-top: 15px;
+	}
+
+	.model-strip__nav {
+		grid-column: 1 / 3;
+		grid-row: 2 / 3;
+		border-top: 1px solid var(--dark);
+		padding: 15px 0;
+	}
+
+	.model-strip__btn-container {
+		grid-column: 2 / 3;
+		grid-row: 1 / 2;
+	}
+}
+
+@media (max-width: 479px) {
+	.model-strip__list {
+		gap: 15px;
+	}
+
+	.model-strip__btn_type_testdrive {
+		display: none !important;
+	}
+}
+
+@media (max-width: 359px) {
+	.model-strip__list {
+		gap: unset;
+		justify-content: space-between;
+	}
+}
+
+/* model intro */
+.model-intro {
+	position: relative;
+	min-height: 700px;
+	max-height: 900px;
+	height: 100vh;
+	display: grid;
+	grid-template-rows: 1fr max-content;
+}
+
+.model-intro__img-container {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.model-intro__img-container::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.9) 100%);
+}
+
+.model-intro__img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+	background-color: var(--dark);
+}
+
+/* model intro body */
+.model-intro__body {
+	display: grid;
+	grid-auto-flow: row;
+	grid-auto-rows: max-content;
+	margin-top: auto;
+	margin-bottom: auto;
+	padding-top: 192px;
+	gap: 40px;
+}
+
+.model-intro__title {
+	color: var(--light);
+}
+
+.model-intro__subtitle {
+	color: var(--light);
+	max-width: 500px;
+}
+
+.model-intro__body-btn-container {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	gap: 10px;
+}
+
+/* model intro footer */
+.model-intro__footer {
+	height: 80px;
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid rgba(255, 255, 255, 0.5)
+}
+
+.model-intro__price {
+	color: var(--light);
+}
+
+.model-intro__benefits {
+	display: grid;
+	grid-template-columns: repeat(3, max-content);
+	column-gap: 20px;
+}
+
+.model-intro__benefits-item {
+	color: var(--light);
+}
+
+@media (max-width: 1279px) {
+	.model-intro {
+		min-height: 600px;
+		max-height: 800px;
+	}
+
+	.model-intro__breadcrumb {
+		margin-top: 70px;
+	}
+
+	.model-intro__footer {
+		height: 70px;
+	}
+}
+
+@media (max-width: 999px) {
+	.model-intro__footer {
+		height: auto;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+
+	.model-intro__benefits {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 767px) {
+	.model-intro__img-container::after {
+		height: calc(100% - 70px - 140px);
+		background-image: linear-gradient(to bottom, var(--dark) 0%, transparent 20%, transparent 40%, var(--dark) 100%);
+		margin-top: 70px;
+		margin-bottom: 140px;
+	}
+
+	.model-intro__img {
+		border-top: 70px solid var(--dark);
+		border-bottom: 140px solid var(--dark);
+	}
+
+	.model-intro__body {
+		margin-bottom: 30px;
+		gap: 30px;
+	}
+}
+
+@media (max-width: 479px) {
+	.model-intro__footer {
+		grid-template-columns: 1fr;
+		row-gap: 15px;
+	}
+}

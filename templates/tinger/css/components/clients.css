@@ -1,0 +1,23 @@
+/* clients */
+.clients__swiper {
+    border-top: 1px solid var(--blue);
+    border-bottom: 1px solid var(--blue);
+}
+
+.clients__slide {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(1);
+    transition: filter 0.2s;
+}
+
+.clients__slide:hover {
+    filter: grayscale(0);
+}
+
+@media (max-width: 1279px) {
+    .clients__slide {
+        width: 160px;
+    }
+}

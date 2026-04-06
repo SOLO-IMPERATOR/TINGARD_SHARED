@@ -1,0 +1,610 @@
+/* defalut radio & checkbox hide */
+.radio__input,
+.checkbox__input {
+    position: absolute;
+	top: 20px;
+	left: 10px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+	margin: 0;
+	padding: 0;
+}
+
+.radiobox__list {
+	display: grid;
+	gap: 10px;
+}
+
+.radiobox__list-item {
+	position: relative;
+}
+
+/* checkbox container */
+.checkbox__container,
+.radiobox__container {
+    display: grid;
+	grid-template-columns: max-content 1fr;
+	column-gap: 10px;
+}
+
+/* .authorize__remember .checkbox__container,
+.testdrive__option-item-content > .radiobox__container,
+.conf-models__radio > .radiobox__container,
+.quiz-atv__radio > .radiobox__container,
+.testdrive-models__radio > .radiobox__container {
+	grid-template-columns: max-content 1fr;
+	column-gap: 10px;
+} */
+
+@media (max-width: 479px) {
+	.conf-widget__options {
+		margin-left: -15px;
+		margin-right: -15px;
+		width: calc(100% + 30px);
+	}
+}
+
+
+.conf-widget__options-item > .checkbox__container {
+	grid-template-columns: max-content 1fr;
+	padding: 10px 0;
+}
+
+.conf-widget__options-item_type_with-img .checkbox__container {
+	grid-template-columns: 220px max-content 1fr;
+	grid-template-rows: max-content max-content;
+	padding-left: 0;
+}
+
+.conf-widget__options-item_type_with-img .checkbox__text {
+	overflow-wrap: break-word;
+}
+
+.checkbox__price {
+	padding-top: 5px;
+}
+
+.conf-widget__options-item .checkbox__price {
+	grid-column: 2 / 3;
+}
+
+.conf-widget__options-item_type_with-img .checkbox__price {
+	grid-column: 3 / 4;
+}
+
+.checkbox__img-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--light-gray);
+	grid-row: 1 / 3;
+	margin-top: -5px;
+	margin-bottom: -5px;
+}
+
+.checkbox__text-clarification {
+    display: block;
+	padding-top: 5px;
+    font-size: 12px;
+	line-height: 1.25;
+	color: var(--deep-blue);
+}
+
+.checkbox,
+.radiobox {
+	display: block;
+	position: relative;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    background-color: var(--light);
+    border: 1px solid var(--dark);
+}
+
+.checkbox_theme_light {
+    background-color: transparent;
+    border: 1px solid var(--light);
+}
+
+.radiobox {
+	border-radius: 50%;
+}
+
+.checkbox__text,
+.radiobox__text,
+.checkbox__price {
+	line-height: 20px;
+}
+
+.checkbox__text_theme_light,
+.radiobox__text_theme_light {
+	color: var(--light);
+}
+
+.radiobox_place_conf-models {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	z-index: 2;
+}
+
+.radiobox::after,
+.checkbox::after {
+    content: "";
+    position: absolute;
+	background-color: transparent;
+}
+
+.checkbox::after {
+	width: 100%;
+    height: 100%;
+	top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+}
+
+.radiobox::after {
+    width: 10px;
+    height: 10px;
+    left: 4px;
+    top: 4px;
+    border-radius: 50%;
+}
+
+/* checkbox checked */
+.checkbox__input:checked ~ .checkbox__container .checkbox::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='15' height='11' viewBox='0 0 15 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 1L5.5 9.5L1.5 5.5' stroke='black' stroke-width='2'/%3E%3C/svg%3E%0A");
+}
+
+.checkbox__input:checked ~ .checkbox__container .checkbox_theme_light::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='15' height='11' viewBox='0 0 15 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 1L5.5 9.5L1.5 5.5' stroke='white' stroke-width='2'/%3E%3C/svg%3E%0A");
+}
+
+/* radio checked */
+.radio__input:checked + .radiobox::after,
+.radio__input:checked ~ .testdrive__option-item-content .radiobox__container .radiobox::after,
+.radio__input:checked ~ .radiobox__container .radiobox::after {
+	background-color: var(--dark);
+}
+
+.radio__input:checked ~ .testdrive__option-item-content {
+	background: var(--light);
+}
+
+.radio__input:checked ~ .testdrive__option-item-content::after {
+	opacity: 1;
+}
+
+/* checkbox, radio focused */
+.radio__input:focus + .radiobox,
+.checkbox__input:focus + .checkbox {
+    box-shadow: 0 0 0 2px var(--deep-blue);
+}
+
+/* checkbox, radio disabled */
+.radio__input:disabled + .radiobox,
+.checkbox__input:disabled + .checkbox {
+    border-color: #999999;
+}
+
+.radio__input:disabled + .radiobox::after {
+	background-color: #999999;
+}
+
+.checkbox__input:disabled ~ .checkbox__container .checkbox__text,
+.checkbox__input:disabled ~ .checkbox__container .checkbox__price {
+    color: #999999;
+}
+
+.checkbox__input:disabled ~ .checkbox__container .checkbox__text-clarification {
+	color: #9dbfae;
+}
+
+.checkbox__input:disabled ~ .checkbox__container .checkbox {
+	border-color: #999999;
+}
+
+/* disabled & checked */
+.checkbox__input:disabled:checked ~ .checkbox__container .checkbox::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='15' height='11' viewBox='0 0 15 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 1L5.5 9.5L1.5 5.5' stroke='%23cccccc' stroke-width='2'/%3E%3C/svg%3E%0A");
+}
+
+.radio__input:disabled:checked + .radiobox::after {
+	background-color: #999999;
+}
+
+
+
+/* select */
+.select {
+	display: block;
+	font-size: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	color: var(--dark);
+	line-height: inherit;
+	padding: 10px;
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	border: 1px solid var(--black);
+	box-shadow: none;
+	border-radius: 0;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: var(--white);
+	background-image: url("data:image/svg+xml,%3Csvg width='20' height='11' viewBox='0 0 20 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19 0.363281L10 9.36328L1 0.363281' stroke='%23000000'/%3E%3C/svg%3E%0A");
+	background-repeat: no-repeat;
+	background-position: right 10px top 50%, 0 0;
+	background-size: 14px 7px;
+	transition: border-color 0.2s ease;
+}
+
+.select::-ms-expand {
+	display: none;
+}
+
+.select:hover {
+	border-color: var(--black);
+}
+
+.select:focus {
+	border-color: var(--black);
+	box-shadow: none; /*0 0 0 2px var(--blue);*/
+	color: var(--dark);
+	outline: none;
+}
+
+.select option {
+	font-weight: normal;
+}
+
+.select--dark {
+	background-image: url("data:image/svg+xml,%3Csvg width='20' height='11' viewBox='0 0 20 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19 0.363281L10 9.36328L1 0.363281' stroke='%23000000'/%3E%3C/svg%3E%0A");
+	border-color: var(--dark);
+	color: var(--dark);
+}
+
+.select--dark:hover {
+	border-color: var(--deep-blue);
+}
+
+.select--dark:focus {
+	border-color: var(--dark);
+}
+
+
+/* input */
+.field-input-list {
+	display: grid;
+	gap: 20px;
+}
+
+.field-label {
+	display: grid;
+	grid-template-rows: 1fr max-content;
+	gap: 10px;
+	max-width: 400px;
+	width: 100%;
+	position: relative;
+}
+
+.field-label_type_textarea {
+	max-width: none;
+}
+
+.field-name {
+	align-self: end;
+	font-size: 13px;
+}
+
+.field-input,
+.field-textarea {
+	width: 100%;
+	margin: 0;
+	box-shadow: none;
+	outline: none;
+	font-family: inherit;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: inherit;
+	line-height: 15px;
+	color: var(--dark);
+	background: transparent;
+	border-radius: 0;
+	padding: 12px 10px;
+	border: 1px solid var(--gray);
+	border-radius: 10px;
+	transition: border-color 0.2s ease;
+}
+
+.field-textarea {
+	height: 100px;
+	resize: none;
+}
+
+.field-input::placeholder,
+.field-textarea::placeholder  {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.field-input:focus,
+.field-textarea:focus  {
+	border-color: var(--deep-blue);
+}
+
+.field-input:disabled {
+	border-color: var(--blue);
+}
+
+.field-star {
+	text-transform: lowercase;
+	color: red;
+	padding-left: 5px;
+	font-family: 'JetBrains Mono';
+	font-weight: 500;
+}
+
+/* input, textarea */
+.textarea-field,
+.input-field {
+	width: 100%;
+	margin: 0;
+	box-shadow: none;
+	outline: none;
+	font-family: inherit;
+	font-weight: inherit;
+	font-style: inherit;
+	line-height: inherit;
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--dark);
+	background: transparent;
+	border-radius: 0;
+}
+
+/* input */
+.textarea-field,
+.input-field {
+	padding: 5px 0;
+	border: 0;
+	border-bottom: 1px solid var(--dark);
+}
+
+/* textarea */
+.textarea-field {
+	padding: 5px 10px;
+	border: 1px solid var(--dark);
+	min-width: 100%;
+	min-height: 150px;
+	max-width: 100%;
+	max-height: 150px;
+	resize: none;
+}
+
+.textarea-field::placeholder,
+.input-field::placeholder {
+	font-family: inherit;
+	font-weight: inherit;
+	font-style: inherit;
+	line-height: inherit;
+	color: var(--dark);
+	opacity: 1;
+}
+
+.textarea-field:focus::placeholder,
+.input-field:focus::placeholder {
+	opacity: 0.3;
+}
+
+.form__input-text_theme_light,
+.form__textarea-text_theme_light,
+.input-field_theme_light {
+	color: var(--light);
+	border-bottom: 1px solid var(--light);
+}
+
+.form__input-text_theme_light::placeholder,
+.form__textarea-text_theme_light::placeholder,
+.input-field_theme_light::placeholder {
+	color: var(--light);
+}
+
+.form__input_type_error {
+	border-color: #f00;
+}
+
+.field-error {
+	display: block;
+	padding-top: 5px;
+	font-size: 12px;
+	color: #f00;
+}
+
+@media (max-width: 479px) {
+	.conf-widget__options-item_type_with-img .checkbox__container {
+		grid-template-columns: 50% max-content 1fr;
+		row-gap: 5px;
+	}
+
+	.checkbox__img-container {
+		background: transparent;
+		align-items: flex-start;
+		overflow: unset;
+		margin-top: 0;
+    	margin-bottom: 0;
+	}
+
+	.conf-widget__options-item_type_with-img .checkbox__text {
+		font-size: 13px;
+	}
+
+	.conf-widget__options-item_type_with-img .checkbox__text-clarification {
+		font-size: 11px;
+	}
+}
+
+/* feedback modal */
+.popup-feedback__item .radiobox__container {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 10px;
+}
+
+/* quiz */
+.quiz__questions-item .radiobox__container {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 10px;
+}
+
+.quiz__questions-item {
+	display: block;
+	padding: 15px 0;
+	border-top: 1px solid var(--blue);
+}
+
+.quiz__questions-item:last-child {
+	border-bottom: 1px solid var(--blue);
+}
+
+.quiz__btn {
+	width: 100%;
+}
+
+.quiz__indicator {
+	text-align: center;
+}
+
+.quiz__question-desc {
+	font-size: 12px;
+	padding-top: 15px;
+}
+
+.quiz__btn-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+}
+
+/* quiz-atv */
+.quiz-atv__questions-list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+}
+
+.quiz-atv__questions-list_type_atv {
+	grid-template-columns: unset;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+}
+
+.quiz-atv__img {
+	max-width: 190px;
+	width: 100%;
+}
+
+.quiz-atv__question-title {
+	text-align: center;
+}
+
+.quiz-atv__radio:hover {
+	cursor: pointer;
+}
+
+.quiz-atv__indicator {
+	text-align: center;
+}
+
+.quiz-atv__btn-container {
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
+.quiz-atv__radio_yellow {
+	border-width: 2px;
+	border-color: #f7dd2f;
+}
+
+.quiz-atv__radio_tank {
+	border-width: 2px;
+	border-color: #8a955d;
+}
+
+.quiz-atv__radio_black {
+	border-width: 2px;
+	border-color: #525252;
+}
+
+.quiz-atv__radio_blue {
+	border-width: 2px;
+	border-color: #3677b9;
+}
+
+.quiz-atv__radio_brown {
+	border-width: 2px;
+	border-color: #765d1f;
+}
+
+.quiz-atv__radio_green {
+	border-width: 2px;
+	border-color: #639757;
+}
+
+.quiz-atv__radio_red {
+	border-width: 2px;
+	border-color: #ff2c36;
+}
+
+.quiz-atv__radio_orange {
+	border-width: 2px;
+	border-color: #da6a26;
+}
+
+@media (max-width: 999px) {
+	.quiz-atv__questions-list_type_atv {
+		grid-auto-columns: 170px;
+		width: 100%;
+		overflow-x: scroll;
+		scrollbar-width: thin;
+  		scrollbar-color: #008d48 #e6e6e6;
+	}
+
+	.quiz-atv__questions-list_type_atv::-webkit-scrollbar {
+		width: 5px;
+		height: 5px;
+	}
+
+	.quiz-atv__questions-list_type_atv::-webkit-scrollbar-track {
+		background: #e6e6e6;
+		border-radius: 10px;
+	}
+
+	.quiz-atv__questions-list_type_atv::-webkit-scrollbar-thumb {
+		background-color: #008d48;
+		border-radius: 10px;
+		border: 1px solid rgba(0,0,0,0.05);
+	}
+
+	.quiz-atv__questions-list_type_atv::-webkit-scrollbar-thumb:hover {
+		background-color: #007a3f;
+	}
+
+	.atv-quiz__touch {
+		background-image: url("data:image/svg+xml,%3Csvg width='673' height='796' viewBox='0 0 673 796' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cmask id='mask0_108_14' style='mask-type:luminance' maskUnits='userSpaceOnUse' x='0' y='0' width='673' height='796'%3E%3Cpath d='M672.429 0.630981H0.646484V795.96H672.429V0.630981Z' fill='white'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_108_14)'%3E%3Cpath d='M43.3206 602.065C49.4168 604.641 55.8177 606.653 62.0106 608.6C63.9406 609.212 65.8712 609.823 67.8018 610.447C103.546 621.582 136.937 639.206 166.303 662.429C214.038 700.682 262.341 736.671 303.288 766.829C314.721 775.147 327.659 781.153 341.385 784.535C367.227 791.012 393.75 794.382 420.39 794.571C477.41 794.859 532.867 775.953 577.845 740.906C640.694 693.418 672.477 632.835 672.282 560.777C672.288 532.311 669.429 503.919 663.753 476.024C653.077 421.39 635.894 368.226 612.582 317.673C600.194 291.466 585.788 271.386 568.545 256.286C561.267 249.71 552.673 244.759 543.337 241.763C533.998 238.768 524.126 237.796 514.381 238.913C504.501 240.149 495 243.474 486.506 248.666C478.012 253.859 470.719 260.799 465.114 269.027C463.627 271.127 462.191 273.273 460.546 275.722L459.079 277.895C437.825 260.691 416.201 254.101 393.059 257.719C370.691 261.224 360.833 268.529 338.799 298.412C292.589 274.413 269.139 289.239 247.391 321.692C243.839 314.971 240.399 308.372 237.014 301.879C228.52 285.566 220.473 270.158 211.809 254.912C191.895 219.856 172.305 185.649 151.635 152.554C139.726 133.713 123.073 118.335 103.344 107.962C81.5848 96.4029 62.3877 100.309 46.2842 119.575C40.1605 126.581 35.885 135.005 33.846 144.083C31.807 153.162 32.0696 162.605 34.6095 171.557C37.9877 184.271 42.5739 196.845 47.0062 209.007C49.2841 215.238 51.5546 221.469 53.678 227.743C78.7036 301.608 113.582 372.466 147.314 440.988L152.894 452.315C155.735 458.106 158.341 463.898 161.357 470.603C162.36 472.835 163.399 475.144 164.491 477.553L161.43 477.009C157.522 476.325 154.294 475.762 151.086 475.102C113.393 467.426 74.2065 472.986 40.1385 490.85C14.2018 503.865 2.2402 521.648 3.57218 545.21C5.09335 572.448 18.4726 591.576 43.3206 602.065ZM185.502 539.133C194.961 549.461 203.585 552.213 211.894 547.561C220.557 542.701 223.917 534.265 221.612 523.165C220.129 516.598 217.89 510.227 214.94 504.177C204.807 482.503 194.594 460.863 184.301 439.254C163.514 395.411 142.018 350.069 121.922 305.033C107.695 273.15 95.1471 239.851 83.013 207.644C79.2959 197.778 75.5648 187.923 71.8171 178.078C68.3906 170.555 66.7506 162.341 67.0289 154.079C68.0006 146.378 71.7495 139.295 77.5724 134.161C79.5259 132.675 88.8659 135.149 94.333 139.276C103.824 146.043 112.161 154.295 119.024 163.715C132.539 183.158 144.892 203.384 156.014 224.288C174.847 260.313 193.463 297.23 211.466 332.931C220.194 350.24 228.944 367.538 237.719 384.824L238.337 386.052C240.374 390.623 243.064 394.874 246.324 398.673C248.406 401.337 251.228 403.329 254.434 404.398C257.641 405.472 261.093 405.572 264.358 404.696C267.622 403.815 270.556 401.993 272.792 399.456C275.028 396.92 276.467 393.785 276.93 390.434C277.571 386.916 277.719 383.328 277.369 379.771C277.184 377.352 277.174 374.924 277.339 372.504C277.671 368.991 277.922 365.439 278.169 361.891C278.525 351.802 279.919 341.775 282.327 331.97C282.871 328.293 284.465 324.852 286.919 322.06C289.374 319.269 292.581 317.247 296.158 316.237C299.735 315.228 303.528 315.274 307.079 316.371C310.631 317.467 313.79 319.568 316.175 322.418C322.608 329.093 328.033 336.67 332.278 344.911C333.464 346.942 334.641 348.969 335.841 350.953C337.678 354.306 339.14 357.851 340.198 361.524C340.827 363.455 341.459 365.355 342.185 367.219C346.099 377.258 353.597 381.265 363.276 378.535C371.998 376.072 376.113 369.269 374.858 359.421C374.353 355.436 373.701 351.467 373.045 347.502C372.412 343.641 371.778 339.819 371.284 335.958C370.692 331.48 370.472 326.96 370.624 322.445L370.702 320.368C371.165 307.821 371.605 295.968 384.728 290.516C401.202 283.663 416.827 286.135 428.741 297.466C434.574 303.605 439.578 310.485 443.624 317.928C444.929 320.09 446.227 322.245 447.558 324.353C448.864 326.575 449.987 328.899 450.917 331.302C452.265 335.239 454.381 338.868 457.145 341.981C461.817 346.563 469.989 350.591 475.622 349.389C481.255 348.189 487.024 341.128 489.309 335.005C490.861 330.138 491.734 325.079 491.896 319.974C492.124 317.075 492.355 314.079 492.854 311.257C493.757 304.863 495.332 298.582 497.548 292.516C501.664 282.312 508.358 275.641 516.443 273.729C520.435 272.998 524.547 273.249 528.419 274.46C532.295 275.671 535.817 277.805 538.681 280.679C551.615 292.045 567.591 307.349 576.328 324.947C610.935 394.603 630.959 465.696 635.841 536.261C636.082 539.758 636.012 543.38 635.947 546.882C635.912 548.576 635.882 550.268 635.882 551.959V552.04C640.406 663.506 520.798 742.253 436.467 747.494C371.99 751.518 318.904 733.8 274.238 693.371C242.649 664.776 208.481 637.876 179.224 615.341C149.75 592.412 116.207 575.266 80.3606 564.803L79.4348 564.537C70.2824 562.221 61.3771 559.012 52.8484 554.962C45.0534 550.905 40.4516 545.596 39.8918 540.013C39.3552 534.639 42.4327 529.079 48.7991 523.941C57.6606 516.648 67.9489 511.289 79.0048 508.208C90.3389 505.15 102.014 503.54 113.752 503.413C131.329 503.131 148.594 508.092 163.338 517.667C170.297 522.709 176.581 528.624 182.038 535.265C183.185 536.566 184.339 537.855 185.502 539.125V539.133Z' fill='black'/%3E%3Cpath d='M265.001 87.2676C328.366 89.2594 389.261 112.298 438.077 152.747C439.961 154.268 441.829 155.836 443.694 157.38C448.887 161.689 454.254 166.144 459.948 169.997C464.153 173.185 469.211 175.053 474.476 175.363C476.635 175.345 478.77 174.881 480.743 174.001C482.712 173.121 484.483 171.843 485.939 170.248C496.363 159.669 487.434 148.276 484.499 144.531C480.415 139.185 475.793 134.269 470.712 129.86C424.958 91.0164 374.404 66.5005 320.465 56.9952C307.469 54.7057 294.492 53.5821 280.748 52.393C275.729 51.9568 270.675 51.5205 265.544 51.0147C267.323 49.1129 269.076 47.2477 270.8 45.42C276.757 39.0884 282.381 33.1122 287.752 26.8885C293.979 19.6765 294.532 12.1827 289.258 6.34125C281.32 -2.48072 272.587 3.54981 267.367 7.14807C245.866 21.9929 224.826 36.4904 203.873 50.5553C191.935 58.5782 185.619 67.7629 185.615 77.1217C185.615 85.7582 191.077 94.0088 201.443 100.978C218.775 112.037 236.876 121.843 255.608 130.319L264.1 134.419C270.576 136.863 277.568 137.621 284.416 136.621C286.608 136.63 288.766 136.091 290.696 135.052C292.625 134.014 294.263 132.509 295.462 130.675C296.369 128.775 296.786 126.677 296.672 124.575C296.558 122.472 295.917 120.432 294.809 118.641C291.256 112.071 286.442 106.266 280.641 101.561C275.685 97.7129 270.434 94.2617 264.935 91.2405C263.275 90.2635 261.531 89.2364 259.696 88.1517L260.132 88.0594C261.719 87.6117 263.353 87.3458 265.001 87.2676Z' fill='black'/%3E%3C/g%3E%3C/svg%3E%0A");
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+		display: block;
+		width: 30px;
+		height: 30px;
+		margin-left: auto;
+	}
+}

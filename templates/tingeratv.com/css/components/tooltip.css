@@ -1,0 +1,83 @@
+/* toopltip */
+.tooltip {
+	display: none;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: #fff;
+	text-align: center;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 12px;
+	line-height: 1.5;
+	z-index: 1;
+	position: absolute;
+	width: 160px;
+}
+
+.tooltip::after {
+	content: '';
+	position: absolute;
+	margin-right: -5px;
+	border-width: 5px;
+	border-style: solid;
+}
+
+/* tooltip position left */
+.tooltip_position_left {
+	top: 50%;
+	right: calc(100% + 7px);
+	transform: translateY(-50%);
+}
+
+.tooltip_position_left::after {
+	top: 50%;
+	left: 100%;
+	transform: translateY(-50%);
+	border-color: transparent transparent transparent rgba(0, 0, 0, 0.7);
+}
+
+/* tooltip position right */
+.tooltip_position_right {
+	top: 50%;
+	left: calc(100% + 7px);
+	transform: translateY(-50%);
+}
+
+.tooltip_position_right::after {
+	top: 50%;
+	right: 100%;
+	transform: translateY(-50%);
+	border-color: transparent rgba(0, 0, 0, 0.7) transparent transparent;
+}
+
+/* tooltip position bottom */
+.tooltip_position_bottom {
+	left: 50%;
+	top: calc(100% + 7px);
+	transform: translateX(-50%);
+}
+
+.tooltip_position_bottom::after {
+	left: 50%;
+	bottom: 100%;
+	transform: translateX(-50%);
+	border-color: transparent transparent rgba(0, 0, 0, 0.7) transparent;
+}
+
+/* tooltip position top */
+.tooltip_position_top {
+	left: 50%;
+	bottom: calc(100% + 7px);
+	transform: translateX(-50%);
+}
+
+.tooltip_position_top::after {
+	left: 50%;
+	top: 100%;
+	transform: translateX(-50%);
+	border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+}
+
+/* show tooltip */
+.tooltip_visible {
+	display: block;
+}

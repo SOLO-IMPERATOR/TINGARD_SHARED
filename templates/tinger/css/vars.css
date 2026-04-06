@@ -1,0 +1,33 @@
+:root {
+	--super-light-blue: #fbfbfb;
+	--light-blue: #f3f3f3;
+	--blue: #e3e3e3;
+	--deep-blue: #008d48;
+	--deep-blue-hover: #009d54;
+	--dark: #000000;
+	--light-dark: #333333;
+	--light: #ffffff;
+
+	--deep-gray: #555555;
+	--super-deep-gray: #1d1d1d;
+
+	--black: #000;
+	--light-black: #222;
+
+	--white: #fff;
+	
+	--green: #008d48;
+	--light-green: #009d54;
+
+	--light-gray: #f3f3f3;
+	--gray: #e3e3e3;
+	--medium-gray: #cccccc;
+	--dark-gray: #222;
+	--red: #ff0000;
+	--light-red: #ff3a3a;
+
+
+
+
+	--ui-font-family-primary: 'Montserrat';
+}

@@ -1,0 +1,23 @@
+.dealer-support--become-dealer {
+    margin-bottom: 120px;
+}
+
+.dealer-support__title--become-dealer {
+    margin-bottom: 40px;
+}
+
+.dealer-support__inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 5px;
+}
+
+.dealer-support__item {
+    background: var(--light-blue);
+    padding: 40px 20px;
+}
+
+.dealer-support__item-title {
+    text-align: center;
+    margin-bottom: 30px;
+}

@@ -1,0 +1,445 @@
+/* Пакеты в конфигураторе */
+.conf-widget__packages {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+	gap: 10px;
+}
+
+.conf-widget__package {
+	position: relative;
+	overflow: hidden;
+}
+
+.conf-widget__package-input {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	opacity: 0;
+	z-index: 3;
+}
+
+.conf-widget__package-input:hover {
+	cursor: pointer;
+}
+
+.conf-widget__package-radiobox {
+	z-index: 0;
+	display: grid;
+	grid-template-rows: 1fr max-content;
+	background: var(--light-blue);
+	padding: 15px;
+	color: var(--dark);
+	height: 100%;
+	border-radius: 10px;
+	gap: 10px;
+}
+
+.conf-widget__package-radiobox:hover {
+	background: var(--light);
+}
+
+.conf-widget__package-input:checked + .conf-widget__package-radiobox {
+	position: relative;
+/* 	position: absolute;
+	top: 0;
+	left: 0; */
+	width: 100%;
+	height: 100%;
+	background: var(--light);
+	color: var(--dark);
+}
+
+.conf-widget__package-input:checked + .conf-widget__package-radiobox::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 1px solid var(--deep-blue);
+	border-radius: 10px;
+}
+
+.conf-widget__package-input:disabled + .conf-widget__package-radiobox {
+	border-color: var(--gray);
+}
+
+.conf-widget__package-break {
+	display: none;
+}
+
+.conf-widget__package-additional-benefit {
+	font-weight: 600;
+	color: #ff0000;
+}
+
+.conf-widget__warning {
+	border: 1px solid #ff0000;
+	padding: 15px;
+	border-radius: 10px;
+	margin-top: 20px;
+	color: #ff0000;
+}
+
+/* configurator widget visual */
+.conf-widget__visual {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 20px;
+	max-height: 400px;
+}
+
+.conf-widget__swiper {
+	width: 100%;
+}
+
+.conf-widget__slider {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	margin: auto;
+}
+
+.conf-widget__color-selected {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+
+.conf-widget__color-tagline {
+
+}
+
+.conf-widget__color-list {
+	position: absolute;
+	top: 30px;
+	left: 0;
+	display: grid;
+	grid-template-rows: repeat(8, max-content);
+	align-items: center;
+	row-gap: 5px;
+	z-index: 2;
+}
+
+.conf-widget__color-item {
+	position: relative;
+}
+
+.conf-widget__color-item:hover {
+	cursor: pointer;
+}
+
+.conf-widget__color-radiobox {
+	position: relative;
+	display: block;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	border: 2px solid var(--light-gray);
+	background: var(--light);
+}
+
+.conf-widget__color-radiobox > span {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	margin: 5px;
+}
+
+.conf-widget__color--tank { color: #8a955d; }
+.conf-widget__color--tank::after { background-color: #8a955d; }
+
+.conf-widget__color--white { color: #fff; }
+.conf-widget__color--white::after { background-color: #fff; border: 1px solid var(--gray); }
+
+.conf-widget__color--camouflage-light { color: #9e9a75; }
+.conf-widget__color--camouflage-light::after { background-color: #9e9a75; }
+
+.conf-widget__color--camouflage-dark { color: #604439; }
+.conf-widget__color--camouflage-dark::after { background-color: #604439; }
+
+.conf-widget__color--blue { color: #3677b9; }
+.conf-widget__color--blue::after { background-color: #3677b9; }
+
+.conf-widget__color--oragne { color: #da6a26; }
+.conf-widget__color--orange::after { background-color: #da6a26; }
+
+.conf-widget__color--yellow { color: #f7dd2f; }
+.conf-widget__color--yellow::after { background-color: #f7dd2f; }
+
+.conf-widget__color--black { color: #525252; }
+.conf-widget__color--black::after { background-color: #525252; }
+
+.confwidget__color--green { color: #639757; }
+.conf-widget__color--green::after { background-color: #639757; }
+
+.conf-widget__color--brown { color: #765d1f; }
+.conf-widget__color--brown::after { background-color: #765d1f; }
+
+.conf-widget__color--red { color: #ff2c36; }
+.conf-widget__color--red::after { background-color: #ff2c36; }
+
+
+.radio__input:checked + .conf-widget__color-radiobox {
+	border: 2px solid var(--dark);
+}
+
+.radio__input:disabled + .conf-widget__color-radiobox {
+	opacity: 0.1;
+}
+
+.radio__input:focus + .conf-widget__color-radiobox {
+	box-shadow: 0 0 0 2px var(--blue);
+}
+
+.conf-widget__slide {
+	position: relative;
+	background: var(--light);
+	display: flex;
+	justify-content: center;
+}
+
+.conf-layers {
+	position: relative;
+}
+
+.conf-layers__img {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.conf-layers__img-bg {
+	max-width: 100%;
+}
+
+/* Armor W8 front view */
+.w8-standard-seats-front { z-index: 2; }
+.w8-ergonomic-seats-front { z-index: 2; }
+.w8-bumper-front { z-index: 2; }
+.w8-winch-front { z-index: 2; }
+.w8-awning-with-ergonomic-seats-front { z-index: 3; }
+.w8-awning-with-standard-seats-front { z-index: 3; }
+.w8-tracks-front { z-index: 3; }
+.w8-mudguard-front { z-index: 3; }
+.w8-handrails-front { z-index: 3; }
+.w8-handrails-with-awning-front { z-index: 3; }
+.w8-mirrors-front { z-index: 3; }
+.w8-parking-cover-front { z-index: 3; }
+.w8-roof-trunk-front { z-index: 3; }
+.w8-snow-plow-front { z-index: 3; }
+.w8-spotlight-finder-front { z-index: 3; }
+.w8-woodcutter-front { z-index: 3; }
+.w8-frame-for-ergonomic-seats-front { z-index: 3; }
+.w8-frame-for-standard-seats-front { z-index: 3; }
+.w8-wiper-front { z-index: 3; }
+.w8-wiper-with-awning-front { z-index: 3; }
+
+/* Armor W8 back view */
+.w8-awning-with-ergonomic-seats-and-handrails-back { z-index: 1; }
+.w8-awning-with-ergonomic-seats-back { z-index: 1; }
+.w8-awning-with-standard-seats-and-handrails-back { z-index: 2; }
+.w8-awning-with-standard-seats-back { z-index: 3; }
+.w8-tracks-back { z-index: 3; }
+.w8-mudguard-back { z-index: 3; }
+.w8-ergonomic-seats-back { z-index: 3; }
+.w8-standard-seats-back { z-index: 3; }
+.w8-handrails-back { z-index: 3; }
+.w8-handrails-with-awning-back { z-index: 3; }
+.w8-mirrors-back { z-index: 3; }
+.w8-parking-cover-back { z-index: 3; }
+.w8-roof-trunk-back { z-index: 3; }
+.w8-snow-plow-back { z-index: 3; }
+.w8-spotlight-finder-back { z-index: 3; }
+.w8-transom-back { z-index: 3; }
+.w8-woodcutter-back { z-index: 3; }
+.w8-frame-for-ergonomic-seats-back { z-index: 3; }
+.w8-frame-for-standard-seats-back { z-index: 3; }
+.w8-wiper-with-awning-back { z-index: 3; }
+.w8-wiper-with-frame-back { z-index: 3; }
+
+/* Track 2 TR5 front view */
+.tr5-standard-seats-front { z-index: 3; }
+.tr5-standard-seats-front { z-index: 3; }
+.tr5-bumper-front { z-index: 3; }
+.tr5-frame-front { z-index: 3; }
+.tr5-front-trunk-front { z-index: 3; }
+.tr5-rear-trunk-front { z-index: 3; }
+.tr5-roof-trunk-front { z-index: 3; }
+.tr5-led-lighting-front { z-index: 3; }
+.tr5-mirrors-front { z-index: 3; }
+.tr5-mudguard-front { z-index: 3; }
+.tr5-parking-cover-front { z-index: 3; }
+.tr5-snow-plow-front { z-index: 3; }
+.tr5-spotlight-finder-front { z-index: 3; }
+.tr5-wiper-front { z-index: 3; }
+.tr5-winch-front { z-index: 3; }
+.tr5-woodcutter-front { z-index: 3; }
+.w8-awning-with-ergonomic-seats-front { z-index: 3; }
+.tr5-awning-with-ergonomic-seats-front { z-index: 3; }
+.tr5-awning-with-standard-seats-front { z-index: 3; }
+
+/* Track 2 TR5 back view */
+.tr5-standard-seats-back { z-index: 3; }
+.tr5-ergonomic-seats-back { z-index: 3; }
+.tr5-bumper-back { z-index: 3; }
+.tr5-frame-with-standard-seats-back { z-index: 3; }
+.tr5-frame-with-ergonimic-seats-back { z-index: 3; }
+.tr5-front-trunk-back { z-index: 3; }
+.tr5-rear-trunk-back { z-index: 3; }
+.tr5-roof-trunk-back { z-index: 3; }
+.tr5-mirrors-back { z-index: 3; }
+.tr5-mudguard-back { z-index: 3; }
+.tr5-parking-cover-back { z-index: 3; }
+.tr5-snow-plow-back { z-index: 3; }
+.tr5-spotlight-finder-back { z-index: 3; }
+.tr5-winch-back { z-index: 3; }
+.tr5-woodcutter-back { z-index: 3; }
+.tr5-awning-back { z-index: 3; }
+
+/* TS front view */
+
+/* T4 front view */
+
+/* T8 front view */
+
+/* Dog front view */
+
+.conf-widget__total {
+	display: grid;
+	justify-content: right;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 20px;
+}
+
+.conf-widget__total-btn-container {
+	display: grid;
+	align-items: end;
+}
+
+.conf-widget__btn-container {
+	display: grid;
+}
+
+/* configurator widget slider buttons */
+.conf-widget__arrows {
+	grid-area: 4 / 1 / 5 / 2;
+	display: grid;
+	grid-template-rows: repeat(2, max-content);
+	justify-content: center;
+}
+
+/* configurator widget options */
+.conf-widget__options {
+	max-height: inherit;
+	overflow-y: auto;
+}
+
+.conf-widget__options::-webkit-scrollbar {
+	width: 8px;
+}
+
+.conf-widget__options::-webkit-scrollbar-track {
+	background: var(--light-blue);
+}
+
+.conf-widget__options::-webkit-scrollbar-thumb {
+background: var(--deep-blue);
+}
+
+.conf-widget__options-item {
+	position: relative;
+}
+
+.conf-widget__options-item .checkbox__container {
+	border-bottom: 1px solid var(--blue);
+}
+
+.conf-widget__options-item {
+	background: var(--light);
+}
+
+@media (max-width: 1279px) {
+	.conf-widget__package-radiobox {
+		padding: 15px;
+	}
+
+	.conf-widget__color-radiobox {
+		width: 28px;
+		height: 28px;
+	}
+
+	.conf-widget__color-radiobox > span {
+		width: 16px;
+		height: 16px;
+		margin: 4px;
+	}
+}
+
+@media (max-width: 999px) {
+	.conf-widget__total {
+		column-gap: 0;
+		row-gap: 15px;
+		justify-content: unset;
+		grid-template-columns: 1fr;
+	}
+
+	.conf-widget__visual {
+		grid-template-columns: 1fr;
+		column-gap: 0;
+		max-height: none;
+	}
+
+	.conf-widget__swiper {
+		max-width: 500px;
+		margin-top: 20px;
+	}
+
+	.conf-widget__options {
+		max-height: 400px;
+	}
+}
+
+@media (max-width: 767px) {
+	.conf-widget__packages-container {
+		overflow-x: auto;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+		width: calc(100% + 40px);
+		margin-left: -20px;
+		margin-right: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.conf-widget__packages-container::-webkit-scrollbar {
+		display: none;
+	}
+
+	.conf-widget__packages {
+		width: 768px;
+	}
+}
+
+@media (max-width: 479px) {
+	.conf-widget__package-break {
+		display: block;
+	}
+
+	.conf-widget__swiper {
+		margin-top: 50px;
+	}
+
+}

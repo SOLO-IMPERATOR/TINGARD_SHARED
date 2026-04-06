@@ -1,0 +1,27 @@
+.sections-list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	column-gap: 20px;
+	row-gap: 10px;
+}
+
+.sections-list__link {
+	text-decoration: none;
+	color: var(--deep-blue);
+	font-size: 13px;
+}
+
+@media (max-width: 999px) {
+	.sections-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 479px) {
+	.sections-list {
+		grid-template-columns: 1fr;
+	}
+}

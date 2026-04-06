@@ -1,0 +1,254 @@
+/* checklist-atv */
+.checklist-atv__list {
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+    gap: 20px;
+}
+
+.checklist-atv__item {
+    border-radius: 10px;
+    background: var(--light-gray);
+    padding: 20px;
+    display: grid;
+    grid-auto-rows: max-content;
+    gap: 20px;
+}
+
+.checklist-atv__desc-container {
+    display: grid;
+    gap: 10px;
+}
+
+.checklist-atv__desc {
+    display: grid;
+    grid-template-columns: minmax(min-content, max-content) minmax(10px, 1fr) minmax(min-content, max-content);
+    align-items: center;
+    gap: 10px;
+}
+
+.checklist-atv__desc-separator {
+    height: 0;
+    border-bottom: 1px dotted var(--black);   
+}
+
+.checklist-atv__desc-value {
+    font-weight: 600;
+}
+
+.checklist-atv__steps {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+    width: calc(100% + 10px);
+}
+
+.checklist-atv__steps-item {
+    width: 50px;
+    height: 50px;
+    border-radius: 1000px;
+    border: 2px solid var(--red);
+    color: var(--red);
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none !important;
+}
+
+.checklist-atv__steps-item_important {
+    width: 80px;
+}
+
+.checklist-atv__steps-item_completed {
+    border-color: var(--green);
+    background: var(--green);
+    color: var(--white);
+}
+
+.checklist-atv__steps-item_active {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+/* checklist-steps */
+.checklist-steps {
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+    gap: 20px;
+}
+
+.checklist-steps__desc-container {
+    display: grid;
+    gap: 10px;
+}
+
+.checklist-steps__desc {
+    display: grid;
+    grid-template-columns: minmax(min-content, max-content) minmax(10px, 1fr) minmax(min-content, max-content);
+    align-items: center;
+    gap: 10px;
+}
+
+.checklist-steps__desc-separator {
+    height: 0;
+    border-bottom: 1px dotted var(--black);   
+}
+
+.checklist-steps__desc-value {
+    font-weight: 600;
+}
+
+.checklist-steps__list {
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+    gap: 10px;
+}
+
+.checklist-steps__list-item-container {
+    border-radius: 10px;
+    padding: 0 20px;
+    border: 2px solid var(--red);
+    color: var(--red);
+}
+
+.checklist-steps__list-item {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    column-gap: 10px;
+    align-items: center;
+    min-height: 60px;
+}
+
+.checklist-steps__list-responsible {
+    grid-column: 1 / 3;
+}
+
+.checklist-steps__list-name {
+    font-weight: 600;
+}
+
+.checklist-steps__list-item-container_completed {
+    border-color: var(--green);
+    background: var(--green);
+    color: var(--white);
+}
+
+.checklist-steps__list-item-container_active {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+.checklist-steps__list-item-container_important .checklist-steps__list-item {
+    grid-template-columns: 1fr;
+}
+
+.checklist-steps__list-num {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.checklist-steps__questions {
+    padding-bottom: 20px;
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+    gap: 10px;
+}
+
+.checklist-steps__questions-item {
+    position: relative;
+    padding-left: 30px;
+    color: var(--red);
+}
+
+.checklist-steps__questions-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 2px solid var(--red);
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+}
+
+.checklist-steps__questions-item_completed {
+    color: var(--green);
+}
+
+.checklist-steps__questions-item_completed::before {
+    background: var(--green);
+    border-color: var(--green);
+}
+
+.checklist-steps__questions-item_not-completed::before {
+    background: var(--red);
+    border-color: var(--red);
+}
+
+.checklist-steps__questions-item_not-completed {
+    color: var(--red);
+}
+
+/* cheklist-question */
+.checklist-question__name {
+    margin-bottom: 25px;
+}
+
+.checklist-question__img {
+    margin-bottom: 25px;
+}
+
+.checklist-question__btn-container {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.checklist-question__pagination {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 25px;
+}
+
+.checklist-question__pagination-item {
+    display: block;
+    border: 2px solid var(--red);
+    padding: 3px 5px;
+    border-radius: 1000px;
+    margin: 2px;
+    min-width: 40px;
+    text-align: center;
+    color: var(--red);
+}
+
+.checklist-question__pagination-item_completed {
+    color: var(--white);
+    background: var(--green);
+    border-color: var(--green);
+}
+
+.checklist-question__pagination-item_not-completed {
+    color: var(--white);
+    background: var(--red);
+    border-color: var(--red);
+}
+
+.checklist-question__pagination-item_active {
+    color: var(--green);
+    border-color: var(--green);
+}

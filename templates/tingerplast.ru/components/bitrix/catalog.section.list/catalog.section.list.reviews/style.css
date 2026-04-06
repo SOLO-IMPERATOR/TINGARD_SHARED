@@ -1,0 +1,19 @@
+.reviews-sections {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 30px;
+}
+
+.reviews-sections__link {
+	display: block;
+	border-radius: 1000px;
+	border: 1px solid var(--blue);
+	padding: 5px 10px;
+	color: var(--blue);
+	text-decoration: none;
+	font-size: 12px;
+}

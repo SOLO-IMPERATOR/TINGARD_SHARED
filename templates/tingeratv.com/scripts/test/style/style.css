@@ -1,0 +1,11 @@
+body {
+    /* background-image: url(img/пример_письма.png); */
+}
+
+.post-body {
+    width: 100%;
+    height: 2339px;
+    background-image: url(/local/templates/tinger/scripts/test/style/img/пример_письма.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

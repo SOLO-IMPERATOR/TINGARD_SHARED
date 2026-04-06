@@ -1,0 +1,37 @@
+.model-reviews {
+	padding-bottom: 80px;
+}
+
+.model-reviews__title {
+	margin-bottom: 40px;
+}
+
+.model-reviews__list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	padding-bottom: 30px;
+}
+
+.model-reviews__btn-container {
+	display: grid;
+	grid-template-columns: max-content;
+}
+
+@media (max-width: 999px) {
+	.model-reviews {
+		padding-bottom: 60px;
+	}
+
+	.model-reviews__title {
+		margin-bottom: 30px;
+	}
+
+	.model-reviews__swiper {
+		width: calc(100% + 40px);
+		margin-left: -20px;
+		margin-right: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}

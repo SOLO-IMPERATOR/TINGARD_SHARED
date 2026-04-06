@@ -1,0 +1,153 @@
+.catalog-detail__head {
+	display: grid;
+	grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+	gap: 40px;
+	margin-bottom: 40px;
+}
+
+.catalog-detail__slider {
+	margin-bottom: 20px;
+}
+
+.catalog-detail__thumbs-slider {
+	margin-bottom: 20px;
+}
+
+.catalog-detail__thumbs-slider-item {
+	position: relative;
+}
+
+.catalog-detail__thumbs-slider-item:hover {
+	cursor: pointer;
+}
+
+.catalog-detail__thumbs-slider-item_active:hover {
+	cursor: default;
+}
+
+.catalog-detail__thumbs-slider-item_active::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: calc(100% - 2px);
+	height: calc(100% - 2px);
+	border: 1px solid var(--turquoise);
+	z-index: 2;
+}
+
+.catalog-detail__thumbs-slider-img {
+	background: var(--light-blue);
+}
+
+.catalog-detail__bar {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: max-content;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.catalog-detail__img {
+	background: var(--light-blue);
+}
+
+.catalog-detail__btn-container {
+	display: grid;
+	gap: 15px;
+}
+
+.catalog-detail__chars-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 5px;
+}
+
+.catalog-detail__chars-name {
+	color: var(--deep-blue);
+}
+
+.catalog-detail__chars-item {
+	display: grid;
+	grid-template-columns: minmax(0, max-content) 1fr minmax(0, max-content);
+	gap: 5px;
+	align-items: end;
+	font-size: 13px;
+}
+
+.catalog-detail__chars-separator {
+	max-width: 100%;
+	border-bottom: 1px dotted var(--transparent-black);
+}
+
+.catalog__price {
+	font-weight: 700;
+}
+
+.catalog__price-old {
+	text-decoration: line-through;
+	color: var(--turquoise);
+}
+
+.catalog-detail__info {
+	display: grid;
+	grid-auto-flow: row;
+	grid-auto-rows: max-content;
+	gap: 30px;
+}
+
+.catalog-detail__buy {
+	display: grid;
+	gap: 20px;
+	border: 1px solid var(--medium-blue);
+	padding: 20px;
+	position: relative;
+}
+
+.catalog-detail__buy-container {
+	display: grid;
+	gap: 20px;
+}
+
+.catalog-detail__docs {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+}
+
+.catalog-detail__docs-link {
+    display: inline-flex;
+    align-items: center;
+}
+
+.catalog-detail__docs-link::before {
+	content: '';
+    width: 30px;
+    height: 30px;
+    display: block;
+    background: url(/local/templates/tingerplast.ru/img/file-icon.svg) center center no-repeat;
+}
+
+.catalog-detail__stock {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 11px;
+	color: var(--green);
+	line-height: 14px;
+}
+
+@media (max-width: 767px) {
+	.catalog-detail__head {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.catalog-detail__note {
+	display: block;
+	font-size: 12px;
+	padding-top: 10px;
+}

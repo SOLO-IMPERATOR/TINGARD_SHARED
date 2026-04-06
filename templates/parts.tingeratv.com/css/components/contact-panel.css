@@ -1,0 +1,33 @@
+.contact-panel {
+	background: #222;
+	position: relative;
+	padding: 15px 0;
+}
+
+.contact-panel::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-panel__inner {
+	display: grid;
+	grid-template-columns: 1fr max-content max-content;
+	gap: 40px;
+	color: var(--light);
+}
+
+.contact-panel__link {
+	color: var(--light);
+}
+
+@media (max-width: 767px) {
+	.contact-panel__inner {
+		grid-template-columns: 1fr;
+		gap: 10px;
+	}
+}

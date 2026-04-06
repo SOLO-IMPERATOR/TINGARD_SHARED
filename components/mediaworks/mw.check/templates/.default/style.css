@@ -1,0 +1,13 @@
+/* 
+ Comment Text 
+*/
+
+.loader{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.loader img {
+    margin: 50% auto;
+}

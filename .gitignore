@@ -1,0 +1,71 @@
+# Кэш и временные файлы
+/bitrix/cache/
+/bitrix/managed_cache/
+/bitrix/stack_cache/
+/bitrix/html_pages/
+/upload/tmp/
+
+# Ядро Битрикса (обновляется через админку, в гите не нужно)
+/bitrix/modules/
+/bitrix/admin/
+/bitrix/js/
+/bitrix/themes/
+/bitrix/panel/
+/bitrix/tools/
+/bitrix/components/bitrix/
+/bitrix/activities/
+/bitrix/wizards/
+/bitrix/gadgets/
+/bitrix/images/
+/bitrix/blocks/
+
+# Исключения: твои личные наработки внутри /bitrix/
+!/bitrix/php_interface/
+!/bitrix/templates/
+!/bitrix/components/
+# Если используешь local (современный стандарт), то /bitrix/ игнорируем почти целиком
+/local/cache/
+
+# Конфиги (лучше держать их шаблонами .default, чтобы не затереть пароли БД на сервере)
+/bitrix/.settings.php
+/bitrix/php_interface/dbconn.php
+
+# Пользовательский контент (картинки товаров и т.д.)
+/upload/
+# Если нужно хранить структуру папок, но не сами файлы:
+# !/upload/.section.php
+
+# Системное
+.DS_Store
+.idea/
+.vscode/
+node_modules/
+vendor/*
+
+# Игнорировать все изображения
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.webp
+*.ico
+*.bmp
+
+
+# Папки с бэкапами (в корне и подпапках)
+/backup/
+/backups/
+/bitrix/backup/
+/local/backup/
+
+# Все типы архивов
+*.zip
+*.tar
+*.gz
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.sql.gz
+*.bz2

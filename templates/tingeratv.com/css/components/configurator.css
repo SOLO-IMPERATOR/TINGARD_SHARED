@@ -1,0 +1,119 @@
+/* Конфигуратор - шаг 2 (выбор модификации) */
+.conf-modification {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 20px;
+}
+
+/* .conf-modification__choice {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 20px;
+} */
+
+.conf-modification__img-container {
+	position: relative;
+}
+
+.conf-modification__img {
+	margin: 0 auto;
+}
+
+/* Конфигуратор - шаг 4 */
+.conf-total__visual {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
+	column-gap: 20px;
+	border-top: 1px solid var(--blue);
+	border-bottom: 1px solid var(--blue);
+	padding: 30px 0;
+}
+
+.conf-numbers_place_conf-widget {
+	grid-area: 1 / 2 / 2 / 3;
+}
+
+.conf-numbers__item {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	justify-content: space-between;
+	margin-bottom: 10px;
+	font-weight: 700;
+}
+
+.conf-numbers__tagline {
+	color: var(--deep-blue);
+}
+
+.conf-total__modification {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 20px;
+	justify-content: space-between;
+}
+
+.conf-total__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.conf-total__list-item {
+	position: relative;
+	margin-bottom: 10px;
+	padding-left: 20px;
+}
+
+.conf-total__list-item::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	width: 5px;
+	height: 5px;
+	background: var(--dark);
+	border-radius: 100%;
+}
+
+@media (max-width: 1279px) {
+	.conf-numbers__item {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 999px) {
+	.conf-modification {
+		grid-template-columns: 1fr;
+		column-gap: 0;
+	}
+
+	.conf-numbers_place_conf-widget {
+		grid-area: 1 / 1 / 2 / 3;
+	}
+}
+
+@media (max-width: 767px) {
+	.conf-total__visual {
+		grid-template-columns: 1fr;
+	}
+
+	.conf-total__modification {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 479px) {
+/* 	.conf-modification__choice {
+		grid-template-columns: 1fr;
+		column-gap: 0;
+		row-gap: 30px;
+	} */
+
+	.conf-numbers__item {
+		grid-template-columns: 1fr max-content;
+		align-items: end;
+		column-gap: 10px;
+	}
+}

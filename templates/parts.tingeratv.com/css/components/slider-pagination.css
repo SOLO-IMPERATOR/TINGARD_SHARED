@@ -1,0 +1,47 @@
+/* pagination */
+.slider-pagination {
+	height: 8px;
+	width: 100%;
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	gap: 3px;
+	position: relative;
+	z-index: 2;
+	bottom: unset !important;
+}
+
+.slider-pagination__item {
+	position: relative;
+	overflow: hidden;
+	background-color: rgba(255,255,255,0.4);
+}
+
+.slider-pagination__item::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: left;
+	height: 100%;
+	width: 0%;
+	background-color: white;
+	transition: none;
+}
+
+.slider-pagination__item_clickable:hover {
+	cursor: pointer;
+}
+
+.slider-pagination__item_active::after {
+	animation: fill-progress linear forwards;
+	animation-duration: 5s;
+}
+
+@keyframes fill-progress {
+	from {
+		width: 0%;
+	}
+	to {
+		width: 100%;
+	}
+}

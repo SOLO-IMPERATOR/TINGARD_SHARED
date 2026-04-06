@@ -1,0 +1,122 @@
+<? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+
+use Bitrix\Main;
+use Bitrix\Main\Localization\Loc;
+
+$arParams['USE_DYNAMIC_SCROLL'] = isset($arParams['USE_DYNAMIC_SCROLL']) && $arParams['USE_DYNAMIC_SCROLL'] === 'N' ? 'N' : 'Y';
+$arParams['SHOW_FILTER'] = isset($arParams['SHOW_FILTER']) && $arParams['SHOW_FILTER'] === 'N' ? 'N' : 'Y';
+
+if (!isset($arParams['TOTAL_BLOCK_DISPLAY']) || !is_array($arParams['TOTAL_BLOCK_DISPLAY']))
+{
+	$arParams['TOTAL_BLOCK_DISPLAY'] = array('top');
+}
+
+if (empty($arParams['PRODUCT_BLOCKS_ORDER']))
+{
+	$arParams['PRODUCT_BLOCKS_ORDER'] = 'props,sku,columns';
+}
+
+if (is_string($arParams['PRODUCT_BLOCKS_ORDER']))
+{
+	$arParams['PRODUCT_BLOCKS_ORDER'] = explode(',', $arParams['PRODUCT_BLOCKS_ORDER']);
+}
+
+$arParams['USE_PRICE_ANIMATION'] = isset($arParams['USE_PRICE_ANIMATION']) && $arParams['USE_PRICE_ANIMATION'] === 'N' ? 'N' : 'Y';
+$arParams['EMPTY_BASKET_HINT_PATH'] = isset($arParams['EMPTY_BASKET_HINT_PATH']) ? (string)$arParams['EMPTY_BASKET_HINT_PATH'] : '/';
+$arParams['USE_ENHANCED_ECOMMERCE'] = isset($arParams['USE_ENHANCED_ECOMMERCE']) && $arParams['USE_ENHANCED_ECOMMERCE'] === 'Y' ? 'Y' : 'N';
+$arParams['DATA_LAYER_NAME'] = isset($arParams['DATA_LAYER_NAME']) ? trim($arParams['DATA_LAYER_NAME']) : 'dataLayer';
+$arParams['BRAND_PROPERTY'] = isset($arParams['BRAND_PROPERTY']) ? trim($arParams['BRAND_PROPERTY']) : '';
+
+\CJSCore::Init(array('fx', 'popup', 'ajax'));
+Main\UI\Extension::load(['ui.mustache']);
+
+$this->addExternalJs($templateFolder.'/js/action-pool.js');
+$this->addExternalJs($templateFolder.'/js/filter.js');
+$this->addExternalJs($templateFolder.'/js/component.js');
+
+$mobileColumns = isset($arParams['COLUMNS_LIST_MOBILE'])
+	? $arParams['COLUMNS_LIST_MOBILE']
+	: $arParams['COLUMNS_LIST'];
+$mobileColumns = array_fill_keys($mobileColumns, true);
+
+$jsTemplates = new Main\IO\Directory(Main\Application::getDocumentRoot().$templateFolder.'/js-templates');
+foreach ($jsTemplates->getChildren() as $jsTemplate) {
+	include($jsTemplate->getPath());
+}
+?>
+
+<?if (empty($arResult['ERROR_MESSAGE'])):?>
+
+	<?if ($arResult['BASKET_ITEM_MAX_COUNT_EXCEEDED']):?>
+		<div id="basket-item-message">
+			<?=Loc::getMessage('SBB_BASKET_ITEM_MAX_COUNT_EXCEEDED', array('#PATH#' => $arParams['PATH_TO_BASKET']))?>
+		</div>
+	<?endif?>
+
+	<div id="basket-root" style="opacity: 0;">
+
+		<div id="basket-warning" style="display: none;">
+			<span class="close" data-entity="basket-items-warning-notification-close">&times;</span>
+			<div data-entity="basket-general-warnings"></div>
+			<div data-entity="basket-item-warnings">
+				<?=Loc::getMessage('SBB_BASKET_ITEM_WARNING')?>
+			</div>
+		</div>
+
+
+
+		<div id="basket-items-list-wrapper">
+			<div class="basket-items-list-container" id="basket-items-list-container">
+				<div class="basket-items-list-overlay" id="basket-items-list-overlay" style="display: none;"></div>
+				<div class="basket-items-list" id="basket-item-list">
+					<div class="cart__titles">
+						<div class="cart__titles-img"></div>
+						<div class="cart__titles-sku">Ном. №</div>
+						<div class="cart__titles-name">Наименование</div>
+						<div class="cart__titles-price">Цена за ед.</div>
+						<div class="cart__titles-quantity">Количество</div>
+						<!-- <div class="cart__titles-amount">Сумма</div> -->
+						<div class="cart__titles-delete"></div>
+					</div>
+					<div class="cart__list" id="basket-item-table"></div>
+				</div>
+			</div>
+		</div>
+		
+
+		<?//echo '<pre>'; print_r($arResult['BASKET_ITEM_RENDER_DATA']); echo '</pre>';?>
+
+		<?if ($arParams['BASKET_WITH_ORDER_INTEGRATION'] !== 'Y' && in_array('bottom', $arParams['TOTAL_BLOCK_DISPLAY'])):?>
+			<div data-entity="basket-total-block"></div>
+		<?endif?>
+	</div>
+	<?if (!empty($arResult['CURRENCIES']) && Main\Loader::includeModule('currency')) { CJSCore::Init('currency'); ?>
+		<script>
+			BX.Currency.setCurrencies(<?=CUtil::PhpToJSObject($arResult['CURRENCIES'], false, true, true)?>);
+		</script>
+		
+	<?}
+
+	$signer = new \Bitrix\Main\Security\Sign\Signer;
+	$signedTemplate = $signer->sign($templateName, 'sale.basket.basket');
+	$signedParams = $signer->sign(base64_encode(serialize($arParams)), 'sale.basket.basket');
+	$messages = Loc::loadLanguageFile(__FILE__);
+	?>
+	<script>
+		BX.message(<?=CUtil::PhpToJSObject($messages)?>);
+		BX.Sale.BasketComponent.init({
+			result: <?=CUtil::PhpToJSObject($arResult, false, false, true)?>,
+			params: <?=CUtil::PhpToJSObject($arParams)?>,
+			template: '<?=CUtil::JSEscape($signedTemplate)?>',
+			signedParamsString: '<?=CUtil::JSEscape($signedParams)?>',
+			siteId: '<?=CUtil::JSEscape($component->getSiteId())?>',
+			siteTemplateId: '<?=CUtil::JSEscape($component->getSiteTemplateId())?>',
+			templateFolder: '<?=CUtil::JSEscape($templateFolder)?>'
+		});
+	</script>
+
+<?elseif ($arResult['EMPTY_BASKET']):?>
+	Корзина пуста
+<?else:?>
+	<?ShowError($arResult['ERROR_MESSAGE'])?>
+<?endif?>

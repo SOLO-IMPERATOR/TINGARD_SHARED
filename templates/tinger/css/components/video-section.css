@@ -1,0 +1,32 @@
+.video-section {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
+	background: var(--light-blue);
+}
+
+.video-section__title {
+	padding: 40px 100px 0 100px;
+}
+
+@media (max-width: 1279px) {
+	.video-section__title {
+		padding: 20px 40px 0 40px;
+	}
+}
+
+@media (max-width: 999px) {
+	.video-section {
+		grid-template-columns: 1fr;
+		background: transparent;
+	}
+
+	.video-section__title {
+		order: 1;
+		padding: 0;
+	}
+
+	.video-section__video {
+		order: 2;
+	}
+}

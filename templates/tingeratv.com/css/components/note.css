@@ -1,0 +1,22 @@
+.note {
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px;
+	padding: 15px;
+	margin-bottom: 30px;
+}
+
+.note_type_notetext {
+	color: #008d48;
+	border-color: #008d48;
+}
+
+.note_type_errortext {
+	color: #ff0000;
+	border-color: #ff0000;
+}
+
+.note_type_note {
+	color: #000;
+	border-color: #000;
+}

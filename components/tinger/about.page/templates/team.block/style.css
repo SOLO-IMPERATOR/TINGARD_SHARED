@@ -1,0 +1,28 @@
+.team__img-container {
+	overflow-x: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.team__img-container::-webkit-scrollbar {
+	display: none;
+}
+
+.team__img {
+	width: 100%;
+	max-height: 524px;
+	object-fit: cover;
+	object-position: center;
+}
+
+.team__description {
+	margin-bottom: 25px;
+}
+
+@media (max-width: 1279px) {
+	.team__img {
+		height: 380px;
+		max-width: none;
+		width: auto;
+	}
+}

@@ -1,0 +1,11 @@
+.selection-products__swiper-arrows {
+    padding-top: 20px;
+}
+
+.selection-products__slider-wrapper {
+    align-items: stretch;
+}
+
+.preview-product {
+    height: auto !important;
+}

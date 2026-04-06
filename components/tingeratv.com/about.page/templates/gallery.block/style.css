@@ -1,0 +1,30 @@
+.gallery2__inner {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+}
+
+.gallery2__caption {
+	margin-bottom: 25px;
+}
+
+.gallery2__description {
+	padding-top: 25px;
+	display: grid;
+	gap: 25px;
+}
+
+.gallery2__text {
+	margin: 0;
+	padding: 0;
+}
+
+.gallery2__text_accent {
+	font-weight: 700;
+}
+
+@media (max-width: 767px) {
+	.gallery2__inner {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}

@@ -1,0 +1,8 @@
+.change-password__fields {
+    display: grid;
+    gap: 20px;
+}
+
+.change-password__links {
+    display: inline-grid;
+}

@@ -1,0 +1,15 @@
+.additional-equipment__slider-container {
+    position: relative;
+}
+
+.additional-equipment__slider-wrapper {
+    display: grid !important;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+}
+
+@media (max-width: 1279px) {
+    .additional-equipment__item {
+        width: 280px !important;
+    }
+}

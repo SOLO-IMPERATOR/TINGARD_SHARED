@@ -1,0 +1,34 @@
+.promo__inner {
+    background: #f3f3f3;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.promo__title::before {
+    display: none !important;
+}
+
+.promo__title {
+    margin-bottom: 0 !important;
+    color: black !important;
+}
+
+.promo__title_accent {
+    color: var(--color-blue) !important;
+}
+
+.note_type_errortext {
+    color: #ff0000;
+    border-color: #ff0000;
+}
+
+.note {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+.promo__note {
+    text-align: center;
+}

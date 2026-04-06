@@ -1,0 +1,19 @@
+.author {
+    display: grid;
+    grid-template-columns: max-content min-content;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.author__img {
+    width: 60px;
+    height: 60px;
+    border: 3px solid var(--blue);
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.author__name {
+    color: var(--deep-blue);
+}

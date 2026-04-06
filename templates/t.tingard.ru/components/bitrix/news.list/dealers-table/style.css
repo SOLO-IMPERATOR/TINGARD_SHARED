@@ -1,0 +1,114 @@
+.dealers-table__head {
+	display: grid;
+	grid-template-columns: 25% 25% 1fr;
+	border-bottom: 2px solid var(--color-yellow);
+	color: var(--color-blue);
+	font-weight: 600;
+}
+
+.dealers-table__head-company,
+.dealers-table__head-address,
+.dealers-table__head-city {
+	padding: 10px 20px;
+}
+
+.dealers-table__head-company,
+.dealers-table__head-address {
+	background-color: var(--color-light-blue);
+}
+
+.dealers-table__head-company {
+	border-top-left-radius: 10px;
+}
+
+.dealers-table__head-address {
+	border-top-right-radius: 10px;
+}
+
+.dealers-table__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+}
+
+.dealers-table__item {
+	display: grid;
+	grid-template-columns: 25% 25% 1fr;
+	border-bottom: 1px solid #D2DDEB;
+}
+
+.dealers-table__item:last-child {
+	border-bottom: none;
+}
+
+.dealers-table__item:last-child .dealers-table__company {
+	border-bottom-left-radius: 10px;
+}
+
+.dealers-table__item:last-child .dealers-table__address {
+	border-bottom-right-radius: 10px;
+}
+
+.dealers-table__city,
+.dealers-table__address,
+.dealers-table__company {
+	padding: 10px 20px;
+	display: flex;
+	align-items: center;
+}
+
+.dealers-table__address,
+.dealers-table__company {
+	background-color: var(--color-light-blue);
+}
+
+.dealers-table__city {
+	font-weight: 600;
+}
+
+@media (max-width: 767px) {
+	.dealers-table__head {
+		grid-template-columns: 2fr 3fr;
+	}
+
+	.dealers-table__head-address {
+		display: none;
+	}
+
+	.dealers-table__head-city {
+		font-size: 0;
+		opacity: 0;
+		padding: 10px 10px 0 10px;
+	}
+
+	.dealers-table__head-company {
+		grid-column: 2 / 3;
+		border-top-right-radius: 10px;
+	}
+
+	.dealers-table__item {
+		grid-template-columns: 2fr 3fr;
+	}
+
+	.dealers-table__company {
+		font-weight: 600;
+		padding: 10px 10px 0 10px;
+		word-break: break-all;
+	}
+
+	.dealers-table__address {
+		grid-column: 2 / 3;
+		grid-row: 2 / 3;
+		padding: 0 10px 10px 10px;
+	}
+
+	.dealers-table__city {
+		align-items: flex-start;
+		padding: 10px 10px 0 10px;
+	}
+
+	.dealers-table__item:last-child .dealers-table__address {
+		border-bottom-left-radius: 10px;
+	}
+}

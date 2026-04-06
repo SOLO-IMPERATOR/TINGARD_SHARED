@@ -1,0 +1,75 @@
+.contacts__list {
+	display: grid;
+	grid-template-columns: repeat(3, max-content);
+	grid-auto-rows: max-content;
+	justify-content: space-between;
+	gap: 40px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.contacts__item {
+	display: grid;
+	gap: 25px;
+	grid-auto-rows: max-content;
+}
+
+.contacts__link {
+	display: inline-block;
+	color: var(--dark);
+}
+
+.contacts__email-tagline {
+	display: block;
+	color: var(--deep-blue);
+}
+
+.contacts__phone-tagline {
+	display: block;
+}
+
+.contacts__organization-card {
+	border-radius: 10px;
+	padding: 30px;
+	background: var(--light-gray);
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+}
+
+.contacts__organization-card-value {
+	font-weight: 600;
+}
+
+.contacts__organization-card-name {
+	color: var(--green);
+	margin-bottom: 5px;
+}
+
+@media (max-width: 999px) {
+	.contacts__list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	
+	.contacts__item {
+		gap: 15px;
+	}
+
+	.contacts__organization-card {
+		padding: 20px;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+	
+}
+
+@media (max-width: 767px) {
+	.contacts__list {
+		grid-template-columns: 1fr;
+	}
+
+	.contacts__organization-card {
+		grid-template-columns: 1fr;
+	}
+}

@@ -1,0 +1,38 @@
+.presentation-intro {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+}
+
+@media (max-width: 999px) {
+    .presentation-intro__text-container {
+        grid-row-start: auto;
+        grid-column-start: auto;
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
+
+    .presentation-intro__bg-container  {
+        height: 500px;
+        grid-row-start: auto;
+        grid-column-start: auto;
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
+
+    .presentation-intro__bg {
+        grid-area: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .presentation-intro__bg-container  {
+        height: 400px;
+    }
+}
+
+@media (max-width: 479px) {
+    .presentation-intro__bg-container  {
+        height: 240px;
+    }
+}

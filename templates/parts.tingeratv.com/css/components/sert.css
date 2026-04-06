@@ -1,0 +1,34 @@
+.sert {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	column-gap: 80px;
+    overflow: hidden;
+}
+
+.sert_place_corp-page {
+	border-bottom: 1px solid var(--blue);
+}
+
+.sert__container {
+    overflow: hidden;
+}
+
+@media (max-width: 999px) {
+	.sert {
+		grid-template-columns: 1fr;
+	}
+
+	.sert__slide {
+		width: 160px;
+	}
+
+	.sert__container {
+		margin-right: -30px;
+	}
+}
+
+@media (max-width: 479px) {
+	.sert__container {
+		margin-right: -20px;
+	}
+}

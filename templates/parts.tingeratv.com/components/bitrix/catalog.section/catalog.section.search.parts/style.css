@@ -1,0 +1,7 @@
+.parts-search__items > .parts-search__item-container:nth-child(odd) {
+	background-color: var(--light-blue);
+}
+
+.parts-search__item-container {
+	border-radius: 10px;
+}

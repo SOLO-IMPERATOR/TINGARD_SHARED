@@ -1,0 +1,22 @@
+/* swiper scrollbar */
+.swiper-scrollbar {
+    width: 100%;
+    left: 0;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.2);
+    bottom: 0;
+    height: 10px;
+}
+
+.swiper-scrollbar-drag {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: rgba(255,255,255,0.6);
+    border-radius: 0;
+}
+
+.swiper-scrollbar--long-slider {
+    position: absolute;
+    top: 0;
+}

@@ -1,0 +1,165 @@
+.model-benefits {
+	background: var(--super-deep-gray);
+	border-bottom: 1px solid var(--deep-gray);
+}
+
+.model-benefits__title {
+	text-align: center;
+	color: var(--light);
+}
+
+.model-benefits__inner {
+	display: grid;
+	grid-template-rows: max-content;
+	row-gap: 10px;
+}
+
+.model-benefits__item {
+	display: grid;
+	column-gap: 10px;
+}
+
+.models-benefits__item_size_two-identical-columns {
+	grid-template-columns: repeat(2, 1fr);
+	height: 360px;
+}
+
+.models-benefits__item_size_one-column {
+	height: 360px;
+}
+
+.models-benefits__item_size_two-different-columns {
+	grid-template-columns: 2fr 1fr;
+	height: 240px;
+}
+
+.model-benefits__card {
+	display: grid;
+	grid-template-rows: 1fr max-content;
+	background-color: var(--dark);
+	height: 100%;
+	padding: 25px;
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.model-benefits__card_size_two-columns {
+	grid-template-columns: repeat(2, max-content);
+	justify-content: space-between;
+}
+
+.model-benefits__card-chars {
+	display: grid;
+	grid-template-rows: max-content;
+}
+
+.model-benefits__card-chars .model-benefits__card-chars-item:last-child {
+	align-self: end;
+}
+
+.model-benefits__card-chars-item {
+	color: var(--light);
+}
+
+.model-benefits__card-chars-title {
+	display: block;
+}
+
+.model-benefits__card_image_engine {
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+	url(/local/templates/tinger/img/model-benefits-engine.webp);
+}
+
+.model-benefits__card_image_body-track-2 {
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+	url(/local/templates/tinger/img/model-benefits-body-track-2.webp);
+}
+
+.model-benefits__card_image_body-armor {
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+	url(/local/templates/tinger/img/model-benefits-body-armor.webp);
+}
+
+.model-benefits__card_image_cvt {
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+	url(/local/templates/tinger/img/model-benefits-cvt.webp);
+}
+
+.model-benefits__card_image_seats {
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+	url(/local/templates/tinger/img/model-benefits-seats.webp);
+}
+
+.model-benefits__card_image_chain-protection {
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+	url(/local/templates/tinger/img/model-benefits-chain-protection.webp);
+}
+
+.model-benefits__card_image_conveyor {
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+	url(/local/templates/tinger/img/model-benefits-conveyor.webp);
+}
+
+.model-benefits__card_image_reverse-gear {
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+	url(/local/templates/tinger/img/model-benefits-reverse-gear.webp);
+}
+
+.model-benefits__card_image_led {
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+	url(/local/templates/tinger/img/model-benefits-led.webp);
+}
+
+.model-benefits__card_image_reverse-gear-switch {
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+	url(/local/templates/tinger/img/model-benefits-reverse-gear-switch.webp);
+}
+
+.model-benefits__card_image_plastic-trolleys {
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+	url(/local/templates/tinger/img/model-benefits-plastic-trolleys.webp);
+}
+
+.model-benefits__card-title {
+	color: var(--light);
+}
+
+.model-benefits__card-title_position_bottom {
+	align-self: end;
+}
+
+.model-benefits__card-text {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: var(--light);
+	padding: 25px;
+	background: var(--dark);
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+
+.model-benefits__card:hover .model-benefits__card-text {
+	opacity: 1;
+}
+
+@media (max-width: 767px) {
+	.model-benefits__inner {
+		max-width: 360px;
+		margin: 0 auto;
+	}
+
+	.model-benefits__item {
+		grid-template-columns: 1fr;
+		height: auto;
+		row-gap: 10px;
+	}
+
+	.model-benefits__card {
+		height: 350px;
+	}
+}

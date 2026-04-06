@@ -1,0 +1,40 @@
+/* model-card */
+.model-card {
+	display: grid;
+	grid-auto-rows: min-content;
+	gap: 10px;
+	position: relative;
+	padding-top: 30px;
+}
+
+.model-card__label {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 13px;
+}
+
+.model-card__label_right_20 {
+	right: 20px;
+}
+
+.model-card__img,
+.models-card__img {
+	display: block;
+	max-width: 220px;
+	width: 100%;
+}
+
+.model-card__name {
+	color: var(--black);
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;  
+	overflow: hidden;
+	font-weight: 600;
+}
+
+.model-card__price-tagline {
+	display: block;
+	color: var(--deep-blue);
+}

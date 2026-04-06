@@ -1,0 +1,8 @@
+.auth__fields {
+	display: grid;
+	gap: 20px;
+}
+
+.auth__links {
+	display: grid;
+}

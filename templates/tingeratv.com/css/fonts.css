@@ -1,0 +1,52 @@
+@font-face {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 400;
+	src:
+		local(''),
+		url(../fonts/montserrat-v23-latin_cyrillic-regular.woff2) format('woff2'),
+		url(../fonts/montserrat-v23-latin_cyrillic-regular.woff) format('woff');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	src:
+		local(''),
+		url(../fonts/montserrat-v23-latin_cyrillic-500.woff2) format('woff2'),
+		url(../fonts/montserrat-v23-latin_cyrillic-500.woff) format('woff');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 600;
+	src:
+		local(''),
+		url(../fonts/montserrat-v23-latin_cyrillic-600.woff2) format('woff2'),
+		url(../fonts/montserrat-v23-latin_cyrillic-600.woff) format('woff');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	src:
+		local(''),
+		url(../fonts/montserrat-v23-latin_cyrillic-700.woff2) format('woff2'),
+		url(../fonts/montserrat-v23-latin_cyrillic-700.woff) format('woff');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	font-style: normal;
+	font-weight: 500;
+	src: local(''),
+		url(../fonts/jetbrains-mono-v13-latin_cyrillic-500.woff2) format('woff2'),
+		url(../fonts/jetbrains-mono-v13-latin_cyrillic-500.woff) format('woff');
+}
