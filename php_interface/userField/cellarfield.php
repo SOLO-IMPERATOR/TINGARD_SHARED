@@ -348,6 +348,7 @@ function deleteCacheCellarHighLoadBlock()
     $taggedCache = Application::getInstance()->getTaggedCache();
     $taggedCache->clearByTag('hlblock_id_29');
     $taggedCache->clearByTag('hlblock_id_30');
+    $taggedCache->clearByTag('hlblock_id_36');
 }
 
 
@@ -442,6 +443,14 @@ EventManager::getInstance()->addEventHandler(
         }
     }
 );
+
+// Очистка кеша при изменении городских цен (HL 36)
+$hlblock = HighloadBlockTable::getById(36)->fetch();
+$entity = HighloadBlockTable::compileEntity($hlblock);
+$entityClass = $entity->getDataClass();
+EventManager::getInstance()->addEventHandler($entityClass, 'OnAfterUpdate', 'deleteCacheCellarHighLoadBlock');
+EventManager::getInstance()->addEventHandler($entityClass, 'OnAfterDelete', 'deleteCacheCellarHighLoadBlock');
+EventManager::getInstance()->addEventHandler($entityClass, 'OnAfterAdd', 'deleteCacheCellarHighLoadBlock');
 
 
 function getFileByElementId($elementId, $iblockId, $propertyCode = 'FILE')
