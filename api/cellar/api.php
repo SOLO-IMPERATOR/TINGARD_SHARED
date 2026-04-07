@@ -117,17 +117,19 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
 
     $replacedCount = 0;
     // Накладываем цены
-    foreach($arFullResult as &$series){
+    foreach($arFullResult as $seriesKey => &$series){
         if(empty($series['SIZES'])) continue;
-        foreach($series['SIZES'] as &$size){
+        foreach($series['SIZES'] as $sizeIdx => &$size){
             $sizeId = $size['ID'];
             if(empty($size['UF_CELLAR_SIZE_OPTION_PRICE']) || !is_array($size['UF_CELLAR_SIZE_OPTION_PRICE'])){
                 cellarLog('applyCityPrices: size ID=' . $sizeId . ' — UF_CELLAR_SIZE_OPTION_PRICE пуст или не массив');
                 continue;
             }
+            cellarLog('applyCityPrices: обход size ID=' . $sizeId . ' (серия=' . $seriesKey . ', idx=' . $sizeIdx . '), опций: ' . count($size['UF_CELLAR_SIZE_OPTION_PRICE']));
             foreach($size['UF_CELLAR_SIZE_OPTION_PRICE'] as &$optionPrice){
                 $optionId = $optionPrice['id'];
                 $key = $sizeId . '_' . $optionId;
+                cellarLog('applyCityPrices: проверяю ключ "' . $key . '" (sizeId type=' . gettype($sizeId) . ', optionId type=' . gettype($optionId) . '), isset=' . (isset($cityPrices[$key]) ? 'YES' : 'NO'));
                 if(isset($cityPrices[$key])){
                     cellarLog('applyCityPrices: ЗАМЕНА size=' . $sizeId . ' option=' . $optionId . ' старая=' . $optionPrice['price'] . ' новая=' . $cityPrices[$key]);
                     $optionPrice['price'] = $cityPrices[$key];
