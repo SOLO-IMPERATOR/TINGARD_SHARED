@@ -750,12 +750,12 @@ function acceessLK()
     }
     return false;
 }
+// Подключаем поле "Местоположение России" (Sale-модуль, города и области)
+require_once(__DIR__ . '/userField/locationfield.php');
+
 // Подключаем поле для погребов
 require_once(__DIR__ . '/userField/cellarfield.php');
 // Подключаем поле для погребов
-
-// Подключаем поле "Местоположение России" (Sale-модуль, города и области)
-require_once(__DIR__ . '/userField/locationfield.php');
 
 
 //Удаляем кеш при изменении Вездеходов
