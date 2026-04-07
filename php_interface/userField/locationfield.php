@@ -12,7 +12,7 @@ EventManager::getInstance()->addEventHandler('main', 'OnUserTypeBuildList', ['Sa
 
 class SaleLocationRuUserType
 {
-    const USER_TYPE_ID = 'sale_location_ru';
+    const USER_TYPE_ID = 'sale_location_ru_new';
 
     public static function GetUserTypeDescription(): array
     {
@@ -20,7 +20,7 @@ class SaleLocationRuUserType
             'USER_TYPE_ID' => self::USER_TYPE_ID,
             'CLASS_NAME'   => __CLASS__,
             'DESCRIPTION'  => 'Местоположение России (города и области)',
-            'BASE_TYPE'    => 'int',
+            'BASE_TYPE'    => 'string',
         ];
     }
 
