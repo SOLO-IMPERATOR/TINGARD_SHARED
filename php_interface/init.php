@@ -754,6 +754,9 @@ function acceessLK()
 require_once(__DIR__ . '/userField/cellarfield.php');
 // Подключаем поле для погребов
 
+// Подключаем поле "Местоположение России" (Sale-модуль, города и области)
+require_once(__DIR__ . '/userField/locationfield.php');
+
 
 //Удаляем кеш при изменении Вездеходов
 use Bitrix\Main\Event;
