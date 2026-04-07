@@ -80,7 +80,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
    * Если для города/размера/опции нет записи — остаётся дефолтная цена.
    */
   function cellarLog($message, $data = null){
-    $logFile = $_SERVER['DOCUMENT_ROOT'] . '/upload/cellar_city_prices_debug.log';
+    $logFile = __DIR__ . '/cellar_city_prices_debug.log';
     $line = date('Y-m-d H:i:s') . ' | ' . $message;
     if($data !== null){
         $line .= ' | ' . print_r($data, true);
