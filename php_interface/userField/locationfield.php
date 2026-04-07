@@ -1,78 +1,47 @@
 <?php
+AddEventHandler('main', 'OnUserTypeBuildList', ['SaleLocationRuUserType', 'GetUserTypeDescription']);
 
 use Bitrix\Main\Loader;
-use Bitrix\Main\EventManager;
-use Bitrix\Sale\Location\LocationTable;
-use Bitrix\Main\ORM\Fields\Relations\Reference;
-use Bitrix\Main\ORM\Query\Join;
-use Bitrix\Sale\Location\Name\LocationTable as LocationNameTable;
-
-// Используем EventManager как в твоем рабочем примере для надежности
-EventManager::getInstance()->addEventHandler('main', 'OnUserTypeBuildList', ['SaleLocationRuUserType', 'GetUserTypeDescription']);
 
 class SaleLocationRuUserType
 {
-    const USER_TYPE_ID = 'sale_location_ru_new';
+    const USER_TYPE_ID = 'sale_location_ru';
 
-    public static function GetUserTypeDescription(): array
+    public static function GetUserTypeDescription()
     {
         return [
             'USER_TYPE_ID' => self::USER_TYPE_ID,
-            'CLASS_NAME'   => __CLASS__,
-            'DESCRIPTION'  => 'Местоположение России (города и области)',
-            'BASE_TYPE'    => 'string',
+            'CLASS_NAME' => __CLASS__,
+            'DESCRIPTION' => 'Местоположение России (города и области)',
+            'BASE_TYPE' => 'string',
         ];
     }
 
-    /**
-     * Обязательные методы для корректной регистрации в HL-блоках
-     */
-    public static function PrepareSettings($arUserField): array { return []; }
-    public static function GetSettingsHTML($arUserField, $arHtmlControl, $bVarsFromForm): string { return ''; }
-
-    /**
-     * Обработка значения перед сохранением
-     */
-    public static function OnBeforeSave($arUserField, $value)
-    {
-        return (int)$value;
-    }
-
-    /**
-     * Получить список городов и областей России.
-     */
-    private static function getLocations(): array
+    private static function getLocations()
     {
         if (!Loader::includeModule('sale')) {
             return [];
         }
 
-        // Поиск ID России для фильтрации по вхождению (LEFT/RIGHT MARGIN)
-        $russiaRow = LocationTable::getList([
-            'filter' => ['=TYPE.CODE' => 'COUNTRY', 'NAME.NAME' => 'Россия', 'NAME.LANGUAGE_ID' => 'ru'],
+        $russiaRow = \Bitrix\Sale\Location\LocationTable::getList([
+            'filter' => ['=ID' => 1],
             'select' => ['LEFT_MARGIN', 'RIGHT_MARGIN'],
             'limit'  => 1,
         ])->fetch();
 
-        // Если по имени не нашли, пробуем по ID 1 (дефолт Битрикса)
         if (!$russiaRow) {
-            $russiaRow = LocationTable::getList([
-                'filter' => ['=ID' => 1],
-                'select' => ['LEFT_MARGIN', 'RIGHT_MARGIN'],
-                'limit'  => 1,
-            ])->fetch();
+            return [];
         }
-
-        if (!$russiaRow) return [];
 
         $typeLabels = ['CITY' => 'город', 'REGION' => 'область / край'];
 
-        $res = LocationTable::getList([
+        $res = \Bitrix\Sale\Location\LocationTable::getList([
             'runtime' => [
-                new Reference(
+                new \Bitrix\Main\ORM\Fields\Relations\Reference(
                     'NAME_RU',
-                    LocationNameTable::class,
-                    Join::on('this.ID', 'ref.LOCATION_ID')->where('ref.LANGUAGE_ID', '=', 'ru'),
+                    \Bitrix\Sale\Location\Name\LocationTable::class,
+                    \Bitrix\Main\ORM\Query\Join::on('this.ID', 'ref.LOCATION_ID')
+                        ->where('ref.LANGUAGE_ID', '=', 'ru'),
                     ['join_type' => 'INNER']
                 ),
             ],
@@ -96,16 +65,20 @@ class SaleLocationRuUserType
         return $items;
     }
 
-    private static function getLocationName(int $id): string
+    private static function getLocationName($id)
     {
-        if ($id <= 0 || !Loader::includeModule('sale')) return '';
+        $id = (int)$id;
+        if ($id <= 0 || !Loader::includeModule('sale')) {
+            return '';
+        }
 
-        $row = LocationTable::getList([
+        $row = \Bitrix\Sale\Location\LocationTable::getList([
             'runtime' => [
-                new Reference(
+                new \Bitrix\Main\ORM\Fields\Relations\Reference(
                     'NAME_RU',
-                    LocationNameTable::class,
-                    Join::on('this.ID', 'ref.LOCATION_ID')->where('ref.LANGUAGE_ID', '=', 'ru'),
+                    \Bitrix\Sale\Location\Name\LocationTable::class,
+                    \Bitrix\Main\ORM\Query\Join::on('this.ID', 'ref.LOCATION_ID')
+                        ->where('ref.LANGUAGE_ID', '=', 'ru'),
                     ['join_type' => 'INNER']
                 ),
             ],
@@ -117,7 +90,7 @@ class SaleLocationRuUserType
         return $row ? (string)$row['LOC_NAME'] : '';
     }
 
-    public static function GetEditFormHTML($arUserField, $arHtmlControl): string
+    public static function GetEditFormHTML($arUserField, $arHtmlControl)
     {
         $currentId = (int)($arHtmlControl['VALUE'] ?? 0);
         $locations = self::getLocations();
@@ -140,13 +113,13 @@ class SaleLocationRuUserType
                 box-shadow: 0 3px 8px rgba(0,0,0,.15);
             }
             .<?= $uid ?>-wrap .loc-dropdown li { padding: 5px 10px; cursor: pointer; font-size: 13px; border-bottom: 1px solid #f2f2f2; }
-            .<?= $uid ?>-wrap .loc-dropdown li:hover, .<?= $uid ?>-wrap .loc-dropdown li.active { background: #e8f0fe; }
+            .<?= $uid ?>-wrap .loc-dropdown li:hover { background: #e8f0fe; }
             .<?= $uid ?>-wrap .loc-dropdown .loc-type { color: #999; font-size: 11px; margin-left: 6px; }
             .<?= $uid ?>-wrap .loc-clear { cursor: pointer; color: #c00; font-size: 16px; margin-left: 4px; background: none; border: none; vertical-align: middle; }
         </style>
 
         <div class="<?= $uid ?>-wrap">
-            <input type="text" id="<?= $uid ?>_search" placeholder="Поиск города..." autocomplete="off">
+            <input type="text" id="<?= $uid ?>_search" placeholder="Поиск города или области..." autocomplete="off">
             <button type="button" class="loc-clear" id="<?= $uid ?>_clear" style="display:none;">&times;</button>
             <ul class="loc-dropdown" id="<?= $uid ?>_list"></ul>
             <input type="hidden" name="<?= $fieldName ?>" id="<?= $uid ?>_val" value="<?= $currentId ?: '' ?>">
@@ -155,64 +128,97 @@ class SaleLocationRuUserType
         <script>
         (function() {
             var data = <?= json_encode($locations, JSON_UNESCAPED_UNICODE) ?>;
-            var elSearch = document.getElementById('<?= $uid ?>_search'),
-                elList = document.getElementById('<?= $uid ?>_list'),
-                elHidden = document.getElementById('<?= $uid ?>_val'),
-                elClear = document.getElementById('<?= $uid ?>_clear');
+            var elSearch = document.getElementById('<?= $uid ?>_search');
+            var elList = document.getElementById('<?= $uid ?>_list');
+            var elHidden = document.getElementById('<?= $uid ?>_val');
+            var elClear = document.getElementById('<?= $uid ?>_clear');
+            var currentId = <?= $currentId ?: 0 ?>;
 
-            if (<?= $currentId ?>) {
-                var item = data.find(x => x.id === <?= $currentId ?>);
-                if (item) {
-                    elSearch.value = item.name + ' (' + item.type + ')';
-                    elClear.style.display = 'inline';
+            if (currentId) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].id === currentId) {
+                        elSearch.value = data[i].name + ' (' + data[i].type + ')';
+                        elClear.style.display = 'inline';
+                        break;
+                    }
                 }
             }
 
+            var timer = null;
             elSearch.addEventListener('input', function() {
+                clearTimeout(timer);
                 var q = this.value.trim().toLowerCase();
                 if (q.length < 2) { elList.style.display = 'none'; return; }
-                render(q);
+                timer = setTimeout(function() { render(q); }, 150);
+            });
+
+            elSearch.addEventListener('focus', function() {
+                var q = this.value.trim().toLowerCase();
+                if (q.length >= 2) render(q);
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!elSearch.parentNode.contains(e.target)) elList.style.display = 'none';
+            });
+
+            elClear.addEventListener('click', function() {
+                elSearch.value = '';
+                elHidden.value = '';
+                elClear.style.display = 'none';
+                elList.style.display = 'none';
+                elSearch.focus();
             });
 
             function render(q) {
-                var matches = data.filter(x => x.name.toLowerCase().indexOf(q) !== -1).slice(0, 30);
-                elList.innerHTML = matches.map(x => 
-                    `<li data-id="${x.id}" data-full="${x.name} (${x.type})">${x.name} <span class="loc-type">${x.type}</span></li>`
-                ).join('');
-                elList.style.display = matches.length ? 'block' : 'none';
-                
-                elList.querySelectorAll('li').forEach(li => {
-                    li.onclick = function() {
-                        elSearch.value = this.dataset.full;
-                        elHidden.value = this.dataset.id;
-                        elClear.style.display = 'inline';
-                        elList.style.display = 'none';
-                    };
-                });
+                var matches = [];
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].name.toLowerCase().indexOf(q) !== -1) {
+                        matches.push(data[i]);
+                    }
+                    if (matches.length >= 30) break;
+                }
+
+                elList.innerHTML = '';
+                if (!matches.length) {
+                    elList.innerHTML = '<li style="color:#999;cursor:default">Ничего не найдено</li>';
+                } else {
+                    for (var j = 0; j < matches.length; j++) {
+                        var li = document.createElement('li');
+                        li.setAttribute('data-id', matches[j].id);
+                        li.setAttribute('data-full', matches[j].name + ' (' + matches[j].type + ')');
+                        li.innerHTML = esc(matches[j].name) + '<span class="loc-type">' + esc(matches[j].type) + '</span>';
+                        li.addEventListener('mousedown', (function(m) {
+                            return function(e) {
+                                e.preventDefault();
+                                elSearch.value = m.name + ' (' + m.type + ')';
+                                elHidden.value = m.id;
+                                elClear.style.display = 'inline';
+                                elList.style.display = 'none';
+                            };
+                        })(matches[j]));
+                        elList.appendChild(li);
+                    }
+                }
+                elList.style.display = 'block';
             }
 
-            elClear.onclick = function() {
-                elSearch.value = ''; elHidden.value = ''; elClear.style.display = 'none';
-            };
+            function esc(s) {
+                return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+            }
         })();
         </script>
         <?php
         return ob_get_clean();
     }
 
-    public static function GetAdminListViewHTML($arUserField, $arHtmlControl): string
+    public static function GetAdminListViewHTML($arUserField, $arHtmlControl)
     {
-        return self::getLocationName((int)$arUserField['VALUE']);
+        return htmlspecialchars(self::getLocationName($arUserField['VALUE']));
     }
 
-    public static function GetPublicViewHTML($arUserField, $value, $strHTMLControlName): string
-    {
-        return self::getLocationName((int)$value['VALUE']);
-    }
-
-    public static function GetDBColumnType($arUserField): string
+    public static function GetDBColumnType($arUserField)
     {
         global $DB;
-        return ($DB->type === 'MYSQL') ? 'int(11)' : 'NUMBER(11)';
+        return $DB->type === 'MYSQL' ? 'int(11)' : 'NUMBER(11)';
     }
 }
