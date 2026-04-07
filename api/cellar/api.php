@@ -11,7 +11,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
   const CELLAR_SIZE_HLID = 30;
   const CELLAR_CITY_PRICE_HLID = 36;
   const CELLAR_IBID = 69;
-  const CACHE_TIME = 3600*24*10; // 10 дней
+  const CACHE_TIME = 3600*24*10*0; // 10 дней
   const CACHE_ID = "cellar_full_info";
   const CACHE_DIR = "/cellar/full/";
   $request = Context::getCurrent()->getRequest();
@@ -79,29 +79,59 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
    * Получить городские цены из HL 36 и наложить на базовые данные.
    * Если для города/размера/опции нет записи — остаётся дефолтная цена.
    */
+  function cellarLog($message, $data = null){
+    $logFile = $_SERVER['DOCUMENT_ROOT'] . '/upload/cellar_city_prices_debug.log';
+    $line = date('Y-m-d H:i:s') . ' | ' . $message;
+    if($data !== null){
+        $line .= ' | ' . print_r($data, true);
+    }
+    file_put_contents($logFile, $line . "\n", FILE_APPEND);
+  }
+
   function applyCityPrices($arFullResult){
-    if(!$arFullResult || !is_array($arFullResult)) return $arFullResult;
+    if(!$arFullResult || !is_array($arFullResult)){
+        cellarLog('applyCityPrices: arFullResult пуст или не массив');
+        return $arFullResult;
+    }
 
     $session = \Bitrix\Main\Application::getInstance()->getSession();
     $geoData = $session->get('B_GEOIP_DATA');
+    cellarLog('applyCityPrices: B_GEOIP_DATA из сессии', $geoData);
+
     $cityId = (int)($geoData['locationCode'] ?? 0);
-    if($cityId <= 0) return $arFullResult;
+    cellarLog('applyCityPrices: cityId = ' . $cityId);
+
+    if($cityId <= 0){
+        cellarLog('applyCityPrices: cityId <= 0, выходим без изменений');
+        return $arFullResult;
+    }
 
     // Кеш городских цен по locationCode
     $cityPrices = getCityPrices($cityId);
-    if(empty($cityPrices)) return $arFullResult;
+    cellarLog('applyCityPrices: getCityPrices вернул ' . count($cityPrices) . ' записей', $cityPrices);
 
+    if(empty($cityPrices)){
+        cellarLog('applyCityPrices: cityPrices пуст, выходим без изменений');
+        return $arFullResult;
+    }
+
+    $replacedCount = 0;
     // Накладываем цены
     foreach($arFullResult as &$series){
         if(empty($series['SIZES'])) continue;
         foreach($series['SIZES'] as &$size){
             $sizeId = $size['ID'];
-            if(empty($size['UF_CELLAR_SIZE_OPTION_PRICE']) || !is_array($size['UF_CELLAR_SIZE_OPTION_PRICE'])) continue;
+            if(empty($size['UF_CELLAR_SIZE_OPTION_PRICE']) || !is_array($size['UF_CELLAR_SIZE_OPTION_PRICE'])){
+                cellarLog('applyCityPrices: size ID=' . $sizeId . ' — UF_CELLAR_SIZE_OPTION_PRICE пуст или не массив');
+                continue;
+            }
             foreach($size['UF_CELLAR_SIZE_OPTION_PRICE'] as &$optionPrice){
                 $optionId = $optionPrice['id'];
                 $key = $sizeId . '_' . $optionId;
                 if(isset($cityPrices[$key])){
+                    cellarLog('applyCityPrices: ЗАМЕНА size=' . $sizeId . ' option=' . $optionId . ' старая=' . $optionPrice['price'] . ' новая=' . $cityPrices[$key]);
                     $optionPrice['price'] = $cityPrices[$key];
+                    $replacedCount++;
                 }
             }
             unset($optionPrice);
@@ -110,6 +140,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
     }
     unset($series);
 
+    cellarLog('applyCityPrices: итого заменено цен: ' . $replacedCount);
     return $arFullResult;
   }
 
@@ -119,6 +150,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
    */
   function getCityPrices($cityId){
     Loader::includeModule('highloadblock');
+    cellarLog('getCityPrices: запрос для cityId=' . $cityId);
 
     $cacheId = 'cellar_city_prices_' . $cityId;
     $cacheDir = '/cellar/city_prices/';
@@ -126,16 +158,29 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
     $taggedCache = \Bitrix\Main\Application::getInstance()->getTaggedCache();
 
     if($cache->initCache(CACHE_TIME, $cacheId, $cacheDir)){
-        return $cache->getVars();
+        $cached = $cache->getVars();
+        cellarLog('getCityPrices: из кеша, записей: ' . count($cached));
+        return $cached;
     }
+
+    cellarLog('getCityPrices: кеш не найден, делаем запрос к HL ' . CELLAR_CITY_PRICE_HLID);
 
     if($cache->startDataCache()){
         $taggedCache->startTagCache($cacheDir);
         $taggedCache->registerTag('hlblock_id_' . CELLAR_CITY_PRICE_HLID);
 
         $arHLBlock = HighloadBlockTable::getById(CELLAR_CITY_PRICE_HLID)->fetch();
+        cellarLog('getCityPrices: HL блок', $arHLBlock ? $arHLBlock['NAME'] : 'НЕ НАЙДЕН');
+
+        if(!$arHLBlock){
+            cellarLog('getCityPrices: HL блок ID=' . CELLAR_CITY_PRICE_HLID . ' не найден!');
+            $cache->abortDataCache();
+            return [];
+        }
+
         $obEntity = HighloadBlockTable::compileEntity($arHLBlock);
         $strEntityDataClass = $obEntity->getDataClass();
+        cellarLog('getCityPrices: entityClass = ' . $strEntityDataClass);
 
         $rsData = $strEntityDataClass::getList([
             'select' => ['UF_CELLAR_SIZE', 'UF_CELLAR_OPTION', 'UF_CITY_PRICE_OPTION'],
@@ -146,13 +191,17 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
         while($arItem = $rsData->Fetch()){
             $key = $arItem['UF_CELLAR_SIZE'] . '_' . $arItem['UF_CELLAR_OPTION'];
             $prices[$key] = $arItem['UF_CITY_PRICE_OPTION'];
+            cellarLog('getCityPrices: row size=' . $arItem['UF_CELLAR_SIZE'] . ' option=' . $arItem['UF_CELLAR_OPTION'] . ' price=' . $arItem['UF_CITY_PRICE_OPTION']);
         }
+
+        cellarLog('getCityPrices: всего записей из БД: ' . count($prices));
 
         $taggedCache->endTagCache();
         $cache->endDataCache($prices);
         return $prices;
     }
 
+    cellarLog('getCityPrices: startDataCache не удался');
     return [];
   }
 
