@@ -297,4 +297,28 @@ class SaleLocationRuUserType
         global $DB;
         return ($DB->type === 'MYSQL') ? 'int(11)' : 'NUMBER(11)';
     }
+
+    /**
+     * Валидация настроек (обязательно для HL-блоков)
+     */
+    public static function PrepareSettings($arUserField): array
+    {
+        return [];
+    }
+
+    /**
+     * Вывод настроек поля в админке (обязательно)
+     */
+    public static function GetSettingsHTML($arUserField, $arHtmlControl, $bVarsFromForm): string
+    {
+        return '';
+    }
+
+    /**
+     * Обработка значения перед сохранением в БД
+     */
+    public static function OnBeforeSave($arUserField, $value)
+    {
+        return (int)$value;
+    }
 }
