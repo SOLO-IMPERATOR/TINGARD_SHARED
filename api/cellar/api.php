@@ -92,6 +92,14 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
 
     foreach($arFullResult as &$series){
         if(empty($series['SIZES'])) continue;
+
+        $optionNames = [];
+        if(!empty($series['OPTIONS'])){
+            foreach($series['OPTIONS'] as $opt){
+                $optionNames[$opt['ID']] = $opt['UF_CELLAR_OPTION_NAME'];
+            }
+        }
+
         foreach($series['SIZES'] as &$size){
             $sizeId = $size['ID'];
             if(empty($size['UF_CELLAR_SIZE_OPTION_PRICE']) || !is_array($size['UF_CELLAR_SIZE_OPTION_PRICE'])) continue;
@@ -100,6 +108,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
                 $key = $sizeId . '_' . $optionId;
                 if(isset($cityPrices[$key])){
                     $optionPrice['price'] = $cityPrices[$key];
+                    if(($optionNames[$optionId] ?? '') === 'Базовая комплектация'){
+                        $size['UF_CELLAR_SIZE_BASE_PRICE'] = $cityPrices[$key];
+                    }
                 }
             }
             unset($optionPrice);
