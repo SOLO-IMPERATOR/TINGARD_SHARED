@@ -213,7 +213,7 @@ class SaleLocationRuUserType
 
     public static function GetAdminListViewHTML($arUserField, $arHtmlControl)
     {
-        return htmlspecialchars(self::getLocationName($arUserField['VALUE']));
+        return htmlspecialchars(self::getLocationName($arHtmlControl['VALUE']));
     }
 
     public static function GetDBColumnType($arUserField)
